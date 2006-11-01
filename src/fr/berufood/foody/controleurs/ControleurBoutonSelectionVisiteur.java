@@ -14,14 +14,15 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 	private int row ;
 	private int column ;
 	private JTable table ;
+	private ModeleVisiteur model;
 	
 	private VueAccueil vue ;
-	private VueVoirSelectionDate vueVoirSelectionDate ;
+	private VueVoirSelectionDate vueVoirSelectionDate = new VueVoirSelectionDate();
 	
-	public ControleurBoutonSelectionVisiteur() {
+	/*public ControleurBoutonSelectionVisiteur() {
 		super();
 		System.out.println("ControleurBoutonVisiteurs::ControleurBoutonVisiteurs");
-	}
+	}*/
 
 	/**
 	 * @return the row
@@ -78,12 +79,21 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("ControleurBoutonVisiteurs::actionPerformed()");
-	
-		Object matriculeVisiteur =  ((ModeleVisiteur) this.table.getModel()).getValueAt(this.row,this.column);
+		//System.out.println("ControleurBoutonVisiteurs::actionPerformed()");
+	    System.out.println(this.getRow());//ok 9
+		
+	    System.out.println(((ModeleVisiteur) this.table.getModel()).getValueAt(0,this.getRow()));//ok 9
+	    
+		//Object matriculeVisiteur =  ((ModeleVisiteur) this.table.getModel()).getValueAt(this.getRow(),0);//don't work
+		                         
 		
 		
-					//vueVoirSelectionDate= new VueVoirSelectionDate(this.vue);
+		//String matriculeVisiteurString = matriculeVisiteur.toString();
+		
+		//System.out.println(matriculeVisiteurString);
+		
+	  
+	    vueVoirSelectionDate.setVisible(true);
 						
 					
 	 }

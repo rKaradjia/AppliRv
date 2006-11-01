@@ -44,10 +44,8 @@ public class ModeleVisiteur extends AbstractTableModel {
 		
 		switch (columnIndex){
 		case 0: return String.class;
-		
-		case 1: return String.class;
-				
-		case 2:return String.class;
+		  case 1: return String.class;
+		  case 2:return String.class;
 		              
 				
 		case 3:return Date.class;
@@ -66,26 +64,26 @@ public class ModeleVisiteur extends AbstractTableModel {
 		// VOTRE CODE ICI - Question 5
 		switch (columnIndex){
 			
-			case 0:
+			case 0:{
 			
 			return lesVisiteurs.get(rowIndex).getMatricule();
-		
-			case 1:
+				}
+			case 1:{
 				
 					return lesVisiteurs.get(rowIndex).getNom();
+				
+					}
+			case 2:{
+				return lesVisiteurs.get(rowIndex).getPrenom();}
 					
-					
+		case 3:{
+				return lesVisiteurs.get(rowIndex).getDateEmbauche();}
 				
-				
-			case 2:
-				return lesVisiteurs.get(rowIndex).getPrenom();
-					
-				
-				
-			case 3:
-				return lesVisiteurs.get(rowIndex).getDateEmbauche();
-			case 4:return lesVisiteurs.get(rowIndex).getVille();
-			case 5:return "Voir";
+		case 4:{return lesVisiteurs.get(rowIndex).getVille();}
+			
+		case 5:{return "Voir";}
+			
+		     	
 					
 					
 			
