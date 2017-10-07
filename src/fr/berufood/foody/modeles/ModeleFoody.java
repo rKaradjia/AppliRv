@@ -22,7 +22,7 @@ import fr.berufood.foody.vues.VueFoody;
 public class ModeleFoody extends AbstractTableModel {
 	
 	//Se Connecter a la base
-	public static void seConnecter(String TfLogin,String Pfmdp,VueAuthentification vue){
+	public static boolean seConnecter(String TfLogin,String Pfmdp,VueAuthentification vue){
 		
 		
 		
@@ -52,17 +52,19 @@ public class ModeleFoody extends AbstractTableModel {
 					connexionResult.setVisible(false);
 					vue.setVisible(false);
 			//		vue2.creerBarreAuthentifie();
+					return true;
 				
 			}else{
 				JOptionPane fails=new JOptionPane();
 				fails.showMessageDialog(fails,"Veuillez reesayé");
-				
+			
 				
 					
 					/*ControleurAuthentification controleur=new ControleurAuthentification(vue);
 					controleur.reinitialiser();*/
 					fails.setVisible(false);
 					vue.initialiser();
+					return false;
 				
 			}
 			
@@ -93,6 +95,7 @@ public class ModeleFoody extends AbstractTableModel {
 			}
 			
 		}
+		return false;
 		
 	  }
 

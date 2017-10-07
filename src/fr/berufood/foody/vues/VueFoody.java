@@ -130,9 +130,15 @@ public class VueFoody extends JFrame {
 		
 		// Active l'item de menu "Se déconnecter"
 		this.itemSeDeconnecter.setEnabled(true) ;
+		
+		
+		// Active les menus "métiers"
+				this.menuAide.setEnabled(true) ;
+				this.menuRapport.setEnabled(true) ;
+				this.menuPraticiens.setEnabled(true) ;
 	}
 	
-	public void setBarreMenusModeDeconnecte(){
+public void setBarreMenusModeDeconnecte(){
 		
 		// Active l'item de menu "Se connecter"
 		this.itemSeConnecter.setEnabled(true) ;
@@ -140,8 +146,12 @@ public class VueFoody extends JFrame {
 		// Désactive l'item de menu "Se déconnecter"
 		this.itemSeDeconnecter.setEnabled(false) ;
 		
+		// Désactive les menus "métiers"
+		this.menuAide.setEnabled(false) ;
+		this.menuRapport.setEnabled(false) ;
+		this.menuPraticiens.setEnabled(false) ;
+		
 	}
-
 	public ControleurFoody getControleur() {
 		return controleur;
 	}

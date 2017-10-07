@@ -20,7 +20,7 @@ public class ControleurAuthentification implements ActionListener{
 	
 	private VueAuthentification vue ;
 	
-	private VueFoody vue2;
+	
 	
 	/** Constructeur
 	 * @param vue Vue associée
@@ -69,7 +69,12 @@ public class ControleurAuthentification implements ActionListener{
 				System.out.println(TfLogin);
 				
 				//this.modele.seConnecter(TfLogin,Pfmdp);
-				this.modele.seConnecter(TfLogin, Pfmdp,vue);
+				Boolean co=this.modele.seConnecter(TfLogin, Pfmdp,vue);
+				
+				if(co==true){
+					VueFoody vueParente = (VueFoody) this.vue.getParent() ;
+					vueParente.setBarreMenusModeConnecte() ;
+				}
 		
 	    }
 	}
