@@ -14,15 +14,15 @@ import fr.berufood.foody.modeles.ModeleVisiteur;
 
 
 public class VueVisiteur extends JPanel {
-	private final String[] entetes = { "Nom" , "Lieu" } ;
+	
 	// VOTRE CODE ICI - Question 10----->https://stackoverflow.com/questions/6644922/jtable-cell-renderer
-	private ModeleVisiteur modele ;
+	private ModeleVisiteur modeleTabVisiteur ;
 	private JTable tabVisiteur;
 	//private RenduCelluleRestaurant renduCellRestaurants;
 	
 	public VueVisiteur(){
 		super() ;
-		modele = new ModeleVisiteur() ;
+		modeleTabVisiteur = new ModeleVisiteur() ;
 		this.creerInterfaceVisiteurs() ;
 	}
 		// VOTRE CODE ICI - Question 10
@@ -36,14 +36,13 @@ private void creerInterfaceVisiteurs(){
 		
 		// VOTRE CODE ICI - Question 6
 		
-		this.tabVisiteur=new JTable(modele);
+		this.tabVisiteur=new JTable(modeleTabVisiteur);
 		this.tabVisiteur.setRowHeight(30);//hauteur de chaques lignes
-		JScrollPane spRestaurant= new JScrollPane(this.tabVisiteur);
-		//tabVisiteur.setDefaultRenderer(String.class, new RenduCelluleRestaurant());
-		spRestaurant.setPreferredSize(new Dimension(1090,420));// y integre un srool d'une dimension de 1090*420
-
-		boxTable.add(spRestaurant);
+		JScrollPane spLivreurs= new JScrollPane(this.tabVisiteur);
+		spLivreurs.setPreferredSize(new Dimension(1090,420));// y integre un srool d'une dimension de 1090*420
+		boxTable.add(spLivreurs);
 		boxPrincipale.add(boxTable);
+		
 	   
 		
 		
@@ -58,7 +57,7 @@ private void creerInterfaceVisiteurs(){
 	
 	
 	public ModeleVisiteur getModeleListeVisiteur() {
-		return modele;
+		return modeleTabVisiteur;
 	}
 
 	public JTable getTabVisiteur() {

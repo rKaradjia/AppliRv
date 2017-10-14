@@ -11,18 +11,22 @@ import fr.berufood.foody.controleurs.ControleurVisiteur;
 
 import javax.swing.JTable;
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Container;
 
 public class VueFoody extends JFrame {
 
 	// Contrôleur associé à la vue
-	private ControleurFoody controleur ;	
+	private ControleurFoody controleur ;
 	private ControleurVisiteur controleurVisiteur;
+	//private ControleurVisiteur controleurVisiteur;
 	
 	// Les menus
 	private JMenu menuFichier = new JMenu("Fichier") ;	
 	private JMenu menuAide = new JMenu("Aide") ;
 	private JMenu menuRapport = new JMenu("Rapport") ;
 	private JMenu menuPraticiens = new JMenu("Praticiens") ;
+	
 	
 	
 	// Les items de menu
@@ -40,6 +44,13 @@ public class VueFoody extends JFrame {
 	
 	private JMenuBar barreMenus = new JMenuBar() ;
 	
+	private CardLayout clVues = new CardLayout(0,0) ;
+	
+	private VueVisiteur vueVisiteur = new VueVisiteur() ;
+	private VueAccueil vueAccueil = new VueAccueil();
+	//private CardLayout clVues = new CardLayout(0,0) ;
+	
+	
 	public VueFoody(){
 		super() ;
 		
@@ -47,7 +58,7 @@ public class VueFoody extends JFrame {
 		this.setTitle("Foody") ;
 		
 		// Définit le largeur et la hauteur de la fenêtre
-		this.setSize(500,400) ;
+		this.setSize(1400,900) ;
 		
 		// Positionne la fenêtre au centre de l'écran
 		this.setLocationRelativeTo(null) ;
@@ -65,9 +76,20 @@ public class VueFoody extends JFrame {
 		// Bascule la barre de menus dans le "Mode non connecte"
 		this.setBarreMenusModeDeconnecte();
 		
+		
+		
+		
+		Container conteneur = this.getContentPane();
+		conteneur.setLayout(clVues);
+		
+		conteneur.add(vueAccueil,"Accueil");
+		conteneur.add(vueVisiteur,"vueVisiteur");
+		this.clVues.show(conteneur,"Accueil") ;
+		
 		// Crée le controleur associé et lui indique que le vue qui lui
 		// est associée est elle-même
 		this.controleur = new ControleurFoody(this) ;
+		this.controleurVisiteur = new ControleurVisiteur(this);
 	//	this.controleurVisiteur=new ControleurVisiteur(this);
 		
 		// Affiche la fenêtre
@@ -103,27 +125,6 @@ public class VueFoody extends JFrame {
 	}
 	
 	
-	/*public void creerBarreAuthentifie(){
-	//	JMenuBar barreMenus2 = new JMenuBar() ;
-		this.menuRapport.add(this.itemLire) ;
-		this.menuRapport.add(this.itemModifier) ;
-		
-		this.menuPraticiens.add(itemSelectPraticien );
-		
-		this.menuMedicaments.add(itemSelectMedica);
-		
-		barreMenus.add(menuFichier) ;
-		barreMenus.add(menuAide) ;
-		barreMenus.add(menuRapport);
-		barreMenus.add(menuPraticiens);
-		barreMenus.add(menuMedicaments);
-		
-		this.setJMenuBar(barreMenus) ;
-		
-	}*/
-	
-	
-	
 	public void setBarreMenusModeConnecte(){
 		// Désactive l'item de menu "Se connecter"
 		this.itemSeConnecter.setEnabled(false) ;
@@ -152,6 +153,15 @@ public void setBarreMenusModeDeconnecte(){
 		this.menuPraticiens.setEnabled(false) ;
 		
 	}
+
+	public void changerVue(String nomVue){
+	// VOTRE CODE ICI - QUESTION 2
+		Container conteneur = this.getContentPane();
+	
+		this.clVues.show(conteneur,nomVue);
+	
+	}
+
 	public ControleurFoody getControleur() {
 		return controleur;
 	}

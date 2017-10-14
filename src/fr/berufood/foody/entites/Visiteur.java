@@ -9,19 +9,10 @@ public class Visiteur {
 	private String ville ; 
 	private DateFr dateEmbauche;
 	
-	/** Constructeur
-	 * VIS_MATRICULE    | varchar(20)  | NO   | PRI |         |       |
-| VIS_NOM          | varchar(50)  | YES  |     | NULL    |       |
-| VIS_PRENOM       | varchar(100) | YES  |     | NULL    |       |
-| VIS_ADRESSE      | varchar(100) | YES  |     | NULL    |       |
-| VIS_CP           | varchar(10)  | YES  |     | NULL    |       |
-| VIS_VILLE        | varchar(60)  | YES  |     | NULL    |       |
-| VIS_DATEEMBAUCHE | date         | YES  |     | NULL    |       |
-| SEC_CODE         | varchar(2)   | YES  | MUL | NULL    |       |
-| LAB_CODE         | varchar(4)   | YES  | MUL | NULL    |       |
-| VIS_MDP          | varchar(50)  | YES  |     | azerty  |       |
-+------------------+--------------+------+-----+---------+----
-	 */
+	public Visiteur(){
+		
+	}
+	 
 	public Visiteur(String nom, String prenom,String ville,DateFr dateEmbauche) {
 		
 		this.nom = nom;

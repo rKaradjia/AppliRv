@@ -61,9 +61,9 @@ public class ControleurFoody implements ActionListener {
 			this.afficherApropos();
 			}*/
 		
-		else if( sourceEvenement == this.vue.getItemLire() ){
+		/*else if( sourceEvenement == this.vue.getItemLire() ){
 			this.afficherRapport();
-			}
+			}*/
 		
 		/*else if( sourceEvenement == this.vue.getItemModifier() ){
 			this.modifierRapport();
@@ -104,9 +104,23 @@ public class ControleurFoody implements ActionListener {
 		}
 	}
 	
-	private void afficherRapport(){
-		System.out.println("L'utilisateur veut afficher la fenêtre À propos...");
-		JOptionPane.showMessageDialog(this.vue, "Bouton lecture les rapports","Page de lecture...",JOptionPane.INFORMATION_MESSAGE) ;
+/*	private void afficherRapport(){
+		try {
+			//Boolean co = this.modele.seConnecter(TfLogin, Pfmdp,vue);
+			System.out.println("co ==true");
+			if(co==true){
+				System.out.println("yes");
+				VueFoody vueParente = (VueFoody) this.vue.getParent() ;
+			
+			    vueParente.setBarreMenusModeConnecte() ;
+			    }
+			
+			}
+		 catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+		
 	}
 /*	
 	private void modifierRapport(){
@@ -119,4 +133,3 @@ public class ControleurFoody implements ActionListener {
 		JOptionPane.showMessageDialog(this.vue, "Foody v2017","A Propops...",JOptionPane.INFORMATION_MESSAGE) ;
 	}*/
 
-}

@@ -17,6 +17,7 @@ public class ControleurAuthentification implements ActionListener{
 	// Déclarer et initialiser l'attribut modele
 	private ModeleFoody modele ;			
 	
+	private VueFoody vuefoody;
 	
 	private VueAuthentification vue ;
 	
@@ -69,12 +70,25 @@ public class ControleurAuthentification implements ActionListener{
 				System.out.println(TfLogin);
 				
 				//this.modele.seConnecter(TfLogin,Pfmdp);
-				Boolean co=this.modele.seConnecter(TfLogin, Pfmdp,vue);
 				
-				if(co==true){
-					VueFoody vueParente = (VueFoody) this.vue.getParent() ;
-					vueParente.setBarreMenusModeConnecte() ;
+				try {
+					Boolean co = this.modele.seConnecter(TfLogin, Pfmdp,vue);
+					System.out.println("co ==true");
+					if(co==true){
+						System.out.println("yes");
+						VueFoody vueParente = (VueFoody) this.vue.getParent() ;
+					
+					    vueParente.setBarreMenusModeConnecte() ;
+					    }
+					
+					}
+				 catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
+				
+				
+				
 		
 	    }
 	}
