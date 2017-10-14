@@ -12,7 +12,7 @@ import fr.berufood.foody.techniques.DateFr;
 
 public class ModeleVisiteur extends AbstractTableModel {
 	
-	private List<Visiteur> lesVisiteurs = ModeleFoody.getModele().getVisiteur() ;
+	private List<Visiteur> lesVisiteurs = ModeleFoody.getVisiteur() ;
 	//Course(int numero, DateFr date, Client leClient, Restaurant leRestaurant, Livreur leLivreur)
 	private final String[] entetes = { "Nom" , "Prenom" , "Date embauche" , "Ville" } ;
 

@@ -49,12 +49,12 @@ public class ModeleFoody extends AbstractTableModel {
 	
 	// Implémentation du DP Singleton (méthode)
 	
-	public static ModeleFoody getModele(){
+	/*public static ModeleFoody getModele(){
 		if( modele == null ){
 			modele = new ModeleFoody() ;
 		}
 		return modele ;
-	}
+	}*/
 	
 	//Se Connecter a la base
 	public static boolean seConnecter(String TfLogin,String Pfmdp,VueAuthentification vue) throws ConnexionException,SQLException{
@@ -117,45 +117,34 @@ public class ModeleFoody extends AbstractTableModel {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
-	
-	
-	
-	
 
-	public List<Visiteur> getVisiteur()  {
+
+	public static List<Visiteur> getVisiteur() {
 		List<Visiteur> visiteurs = new ArrayList<Visiteur>() ;
+		ResultSet resultat = null;
 		Connection connexion = null;
-		try {
-			connexion = ConnexionBD.getConnexion();
-		} catch (ConnexionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		PreparedStatement requetePreparee = null;
 		
-			String sql="select VIS_NOM,VIS_PRENOM,VIS_DATEEMBAUCHE,VIS_VILLE from VISITEUR";
-			
-			PreparedStatement requetePreparee = null;
+		try {
+		
 			try {
-				requetePreparee = (PreparedStatement) connexion.prepareStatement(sql);
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}	
-			
-			ResultSet resultat = null;
-			try {
-				resultat = requetePreparee.executeQuery();
-			} catch (SQLException e) {
+				connexion = ConnexionBD.getConnexion();
+			} catch (ConnexionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-				
-			boolean connexionOk;
+		
+			String sql="select VIS_NOM,VIS_PRENOM,VIS_DATEEMBAUCHE,VIS_VILLE from VISITEUR";
 			
-			try {
-				if(resultat.next()){//tant que il y a des rsats a afficher BOOLEAN
+			requetePreparee = (PreparedStatement) connexion.prepareStatement(sql);
+			
+			resultat = requetePreparee.executeQuery();
+			
+				
+			
+			
+			
+				while(resultat.next()){//tant que il y a des rsats a afficher BOOLEAN
 					Visiteur visiteur = new Visiteur();
 				    visiteur.setNom(resultat.getString("VIS_NOM"));
 				    visiteur.setPrenom(resultat.getString("VIS_PRENOM"));
@@ -164,32 +153,30 @@ public class ModeleFoody extends AbstractTableModel {
 				    
 				    visiteurs.add(visiteur);
 					
-						return visiteurs;
-					
-				}else{
-					JOptionPane connexionrs=new JOptionPane();
-					connexionrs.showMessageDialog(connexionrs,"Aucun visiteur avec ces parametres");
+					//	return visiteurs;
 					
 				}
-			} catch (HeadlessException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		  
-		 
-		return visiteurs;
-		
+				
+		    } catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		 return visiteurs;
 	}
 
 	
+
+
+
+	   
+
+
 	
-	
-	
+	}
 
 	
 		   
-}	
+
 
 		
 
