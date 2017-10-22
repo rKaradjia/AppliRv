@@ -14,7 +14,7 @@ public class ModeleVisiteur extends AbstractTableModel {
 	
 	private List<Visiteur> lesVisiteurs = ModeleFoody.getVisiteur() ;
 	//Course(int numero, DateFr date, Client leClient, Restaurant leRestaurant, Livreur leLivreur)
-	private final String[] entetes = { "Nom" , "Prenom" , "Date embauche" , "Ville" } ;
+	private final String[] entetes = { "Nom" , "Prenom" , "Date embauche" , "Ville","Lecture rapports" } ;
 
 	/*public ModeleListeLivreurs() {
 		super();
@@ -49,6 +49,7 @@ public class ModeleVisiteur extends AbstractTableModel {
 				
 		case 2:return String.class;
 		case 3:return String.class;
+		case 4:return String.class;
 				
 		
 		
@@ -76,14 +77,27 @@ public class ModeleVisiteur extends AbstractTableModel {
 				
 			case 2:
 				return lesVisiteurs.get(rowIndex).getDateEmbauche();
-			case 3:
-			case 4:
-				return lesVisiteurs.get(rowIndex).getVille();
+			case 3:return lesVisiteurs.get(rowIndex).getVille();
+			case 4:return "Voir";
 					
 					
 			
 		}	
 		return null;
+	}
+	
+	
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		
+		if(columnIndex == 4){
+			
+			return true ;
+		}
+		else{
+			
+			return false;
+		}
+		
 	}
 	
 	public void actualiser(){

@@ -9,8 +9,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
+import fr.berufood.foody.editeur.EditeurBoutonSelectionVisiteur;
 import fr.berufood.foody.modeles.ModeleFoody;
 import fr.berufood.foody.modeles.ModeleVisiteur;
+import fr.berufood.foody.rendus.RenduBoutonSelectionVisiteur;
 
 
 public class VueVisiteur extends JPanel {
@@ -34,12 +36,15 @@ private void creerInterfaceVisiteurs(){
 		
 		boxEtiquette.add( new JLabel( "Liste des Visiteurs" ) ) ;
 		
-		// VOTRE CODE ICI - Question 6
 		
 		this.tabVisiteur=new JTable(modeleTabVisiteur);
 		this.tabVisiteur.setRowHeight(30);//hauteur de chaques lignes
 		JScrollPane spLivreurs= new JScrollPane(this.tabVisiteur);
 		spLivreurs.setPreferredSize(new Dimension(1090,420));// y integre un srool d'une dimension de 1090*420
+		//tabVisiteur.setDefaultRenderer(Object.class, new RenduCelluleCourse());
+		tabVisiteur.getColumn("Lecture rapports").setCellRenderer(new RenduBoutonSelectionVisiteur());
+		tabVisiteur.getColumn("Lecture rapports").setCellEditor(new EditeurBoutonSelectionVisiteur());
+		
 		boxTable.add(spLivreurs);
 		boxPrincipale.add(boxTable);
 		
@@ -64,6 +69,5 @@ private void creerInterfaceVisiteurs(){
 		return tabVisiteur;
 	}
 	
-	// VOTRE CODE ICI - Question 10
-
+	
 }
