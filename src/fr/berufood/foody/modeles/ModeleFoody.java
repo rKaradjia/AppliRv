@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 import fr.berufood.foody.controleurs.ControleurAuthentification;
+import fr.berufood.foody.entites.Praticien;
 import fr.berufood.foody.entites.Utilisateur;
 import fr.berufood.foody.entites.Visiteur;
 import fr.berufood.foody.techniques.ConnexionBD;
@@ -73,7 +74,7 @@ public class ModeleFoody extends AbstractTableModel {
 				
 					
 					JOptionPane connexionrs=new JOptionPane();
-					connexionrs.showMessageDialog(connexionrs,"ca marche");
+					connexionrs.showMessageDialog(connexionrs,"Cliquez pour continuer","Connexion Réussie ", 1);
 					connexionrs.setVisible(false);
 					vue.setVisible(false);
 			//		vue2.creerBarreAuthentifie();
@@ -81,7 +82,7 @@ public class ModeleFoody extends AbstractTableModel {
 				
 			}else{
 				JOptionPane fails=new JOptionPane();
-				fails.showMessageDialog(fails,"Veuillez reesayé");
+				fails.showMessageDialog(fails,"Identifiant ou mot de passe incorect","Veuillez réesayé",0);
 			
 				
 					
@@ -134,7 +135,7 @@ public class ModeleFoody extends AbstractTableModel {
 				e.printStackTrace();
 			}
 		
-			String sql="select VIS_NOM,VIS_PRENOM,VIS_DATEEMBAUCHE,VIS_VILLE from VISITEUR";
+			String sql="select VIS_NOM,VIS_PRENOM,VIS_DATEEMBAUCHE,VIS_VILLE from VISITEUR order by VIS_NOM";
 			
 			requetePreparee = (PreparedStatement) connexion.prepareStatement(sql);
 			
@@ -162,6 +163,51 @@ public class ModeleFoody extends AbstractTableModel {
 					e.printStackTrace();
 				}
 		 return visiteurs;
+	}
+
+	public static List<Praticien> getPraticienNoto() {
+		List<Praticien> lesPraticiens = new ArrayList<Praticien>() ;
+		ResultSet resultat = null;
+		Connection connexion = null;
+		PreparedStatement requetePreparee = null;
+		
+		try {
+		
+			try {
+				connexion = ConnexionBD.getConnexion();
+			} catch (ConnexionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			String sql="select PRA_NOM,PRA_PRENOM,PRA_COEFNOTORIETE from PRATICIEN order by PRA_COEFNOTORIETE DESC";
+			
+			requetePreparee = (PreparedStatement) connexion.prepareStatement(sql);
+			
+			resultat = requetePreparee.executeQuery();
+			
+				
+			
+			
+			
+				while(resultat.next()){//tant que il y a des rsats a afficher BOOLEAN
+					Praticien praticien = new Praticien();
+				    praticien.setNom(resultat.getString("PRA_NOM"));
+				    praticien.setPrenom(resultat.getString("PRA_PRENOM"));
+			       // visiteur.setDateEmbauche(resultat.getDateFr("VIS_DATEEMBAUCHE"));
+				    praticien.setCoefnoto(resultat.getFloat("PRA_COEFNOTORIETE"));
+				    
+				     lesPraticiens.add(praticien);
+					
+					//	return visiteurs;
+					
+				}
+				
+		    } catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		 return lesPraticiens;
 	}
 
 	
