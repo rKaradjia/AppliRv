@@ -1,4 +1,4 @@
-ckage fr.berufood.foody.vues;
+package fr.berufood.foody.vues;
 
 import java.awt.Dimension;
 
@@ -13,7 +13,7 @@ import fr.berufood.foody.modeles.ModeleFoody;
 import fr.berufood.foody.modeles.ModelePraticienNoto;
 import fr.berufood.foody.modeles.ModeleVisiteur;
 
-import fr.berufood.foody.rendus.RendusBoutonVoirVisiteur;
+//import fr.berufood.foody.rendus.RendusBoutonVoirVisiteur;
 
 
 public class VuePraticienNoto extends JPanel {
