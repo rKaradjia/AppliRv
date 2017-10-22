@@ -7,6 +7,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JSeparator;
 
 import fr.berufood.foody.controleurs.ControleurFoody;
+import fr.berufood.foody.controleurs.ControleurPraticien;
 import fr.berufood.foody.controleurs.ControleurVisiteur;
 
 import javax.swing.JTable;
@@ -19,6 +20,7 @@ public class VueFoody extends JFrame {
 	// Contrôleur associé à la vue
 	private ControleurFoody controleur ;
 	private ControleurVisiteur controleurVisiteur;
+	private ControleurPraticien controleurPraticien;
 	//private ControleurVisiteur controleurVisiteur;
 	
 	// Les menus
@@ -37,7 +39,8 @@ public class VueFoody extends JFrame {
 	private JMenuItem itemLire = new JMenuItem("Lire") ;
 	private JMenuItem itemModifier = new JMenuItem("Modifier") ;
 	
-	private JMenuItem itemSelectPraticien = new JMenuItem("Selectionner");
+	private JMenuItem itemSelectPraticienCoef = new JMenuItem("Coef. Confiance");
+	private JMenuItem itemSelectPraticienNotoriete = new JMenuItem("Notoriete");
 	
 	private JMenuItem itemSelectMedica = new JMenuItem("Selectionner");
 	
@@ -47,6 +50,7 @@ public class VueFoody extends JFrame {
 	private CardLayout clVues = new CardLayout(0,0) ;
 	
 	private VueVisiteur vueVisiteur = new VueVisiteur() ;
+	private VuePraticienNoto vuePraticienNoto = new VuePraticienNoto();
 	private VueAccueil vueAccueil = new VueAccueil();
 	//private CardLayout clVues = new CardLayout(0,0) ;
 	
@@ -84,12 +88,14 @@ public class VueFoody extends JFrame {
 		
 		conteneur.add(vueAccueil,"Accueil");
 		conteneur.add(vueVisiteur,"vueVisiteur");
+		conteneur.add(vuePraticienNoto, "vuePraticienNoto");
 		this.clVues.show(conteneur,"Accueil") ;
 		
 		// Crée le controleur associé et lui indique que le vue qui lui
 		// est associée est elle-même
 		this.controleur = new ControleurFoody(this) ;
 		this.controleurVisiteur = new ControleurVisiteur(this);
+		this.controleurPraticien = new ControleurPraticien(this);
 	//	this.controleurVisiteur=new ControleurVisiteur(this);
 		
 		// Affiche la fenêtre
@@ -110,7 +116,8 @@ public class VueFoody extends JFrame {
 		this.menuRapport.add(this.itemLire) ;
 		this.menuRapport.add(this.itemModifier) ;
 		
-		this.menuPraticiens.add(itemSelectPraticien );
+		this.menuPraticiens.add(itemSelectPraticienCoef );
+		this.menuPraticiens.add(itemSelectPraticienNotoriete);
 		
 		
 		// Ajoute les menus dans la barre de menu
@@ -194,8 +201,12 @@ public void setBarreMenusModeDeconnecte(){
 		return itemSelectMedica;
 	}
 	
-	public JMenuItem getItemSelectMedica() {
-		return itemSelectPraticien;
+	public JMenuItem getItemSelectPraticienCoef() {
+		return itemSelectPraticienCoef;
+	}
+	
+	public JMenuItem getItemSelectPraticienNotoriete() {
+		return itemSelectPraticienNotoriete;
 	}
 
 
