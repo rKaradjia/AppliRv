@@ -14,7 +14,7 @@ public class ModeleVisiteur extends AbstractTableModel {
 	
 	private List<Visiteur> lesVisiteurs = ModeleFoody.getVisiteur() ;
 	//Course(int numero, DateFr date, Client leClient, Restaurant leRestaurant, Livreur leLivreur)
-	private final String[] entetes = { "Nom" , "Prenom" , "Date embauche" , "Ville","Lecture rapports" } ;
+	private final String[] entetes = { "Matricule","Nom" , "Prenom" , "Date embauche" , "Ville","Lecture rapports" } ;
 
 	/*public ModeleListeLivreurs() {
 		super();
@@ -22,34 +22,36 @@ public class ModeleVisiteur extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
-		// VOTRE CODE ICI - Question 5
+		
 		return lesVisiteurs.size();
 	}
 
 	@Override
 	public int getColumnCount() {
-		// VOTRE CODE ICI - Question 5
+		
 		return entetes.length;
 	}
 	
 	@Override
 	public String getColumnName(int column) {
-		// VOTRE CODE ICI - Question 5
+		
 		return entetes[column];
 	}
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		// VOTRE CODE ICI - Question 5
+		
 		switch (columnIndex){
 		case 0: return String.class;
-				
-		case 1:return String.class;
-		              
+		
+		case 1: return String.class;
 				
 		case 2:return String.class;
+		              
+				
 		case 3:return String.class;
 		case 4:return String.class;
+		case 5:return String.class;
 				
 		
 		
@@ -64,21 +66,25 @@ public class ModeleVisiteur extends AbstractTableModel {
 		switch (columnIndex){
 			
 			case 0:
+			
+			return lesVisiteurs.get(rowIndex).getMatricule();
+		
+			case 1:
 				
 					return lesVisiteurs.get(rowIndex).getNom();
 					
 					
 				
 				
-			case 1:
+			case 2:
 				return lesVisiteurs.get(rowIndex).getPrenom();
 					
 				
 				
-			case 2:
+			case 3:
 				return lesVisiteurs.get(rowIndex).getDateEmbauche();
-			case 3:return lesVisiteurs.get(rowIndex).getVille();
-			case 4:return "Voir";
+			case 4:return lesVisiteurs.get(rowIndex).getVille();
+			case 5:return "Voir";
 					
 					
 			
@@ -89,7 +95,7 @@ public class ModeleVisiteur extends AbstractTableModel {
 	
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		
-		if(columnIndex == 4){
+		if(columnIndex == 5){
 			
 			return true ;
 		}
@@ -102,6 +108,14 @@ public class ModeleVisiteur extends AbstractTableModel {
 	
 	public void actualiser(){
 		this.fireTableDataChanged();
+	}
+
+	public String getMatriculeVisiteur(int index) {
+		
+			String resultat = lesVisiteurs.get(index).getMatricule() ;
+			 
+			return resultat;
+	
 	}
 
 }

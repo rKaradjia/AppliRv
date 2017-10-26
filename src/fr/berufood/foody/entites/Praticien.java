@@ -1,5 +1,7 @@
 package fr.berufood.foody.entites;
 
+import java.sql.Date;
+
 import fr.berufood.foody.techniques.DateFr;
 
 public class Praticien {
@@ -11,13 +13,15 @@ public class Praticien {
 	private String ville;
 	private float coefnoto;
 	private String code;
+	private Date derniereVisite;
 	
 	
     public Praticien(){
     	
     }
 
-	public Praticien(String nom, String prenom, String adresse, String cp, String ville, float coefnoto, String code) {
+	public Praticien(String nom, String prenom, String adresse, String cp, String ville, float coefnoto, String code,
+			Date derniereVisite) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -26,12 +30,20 @@ public class Praticien {
 		this.ville = ville;
 		this.coefnoto = coefnoto;
 		this.code = code;
+		this.derniereVisite=derniereVisite;
 	}
 
 	
 	
 
 
+
+	public Praticien(String nom, String prenom, Date derniereVisite) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.derniereVisite=derniereVisite;
+	}
+	
 
 	public String getNom() {
 		return nom;
@@ -157,12 +169,24 @@ public class Praticien {
 
 
 
+	/**
+	 * @return the derniereVisite
+	 */
+	public Date getDateVisite() {
+		return derniereVisite;
+	}
 
+	/**
+	 * @param derniereVisite the derniereVisite to set
+	 */
+	public void setDateVisite(Date derniereVisite) {
+		this.derniereVisite = derniereVisite;
+	}
 
 	@Override
 	public String toString() {
 		return "Praticien [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville="
-				+ ville + ", coefnoto=" + coefnoto + ", code=" + code + "]";
+				+ ville + ", coefnoto=" + coefnoto + ", code=" + code + ", derniereVisite=" + derniereVisite + "]";
 	}
 
 

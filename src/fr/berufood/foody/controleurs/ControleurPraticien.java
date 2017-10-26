@@ -35,6 +35,7 @@ public class ControleurPraticien implements ActionListener {
 		// Se met à l'écoute de l'item de menu "A propos..."
 		this.vue.getItemSelectPraticienCoef().addActionListener(this) ;
 		this.vue.getItemSelectPraticienNotoriete().addActionListener(this);
+		this.vue.getItemSelectPraticienVisite().addActionListener(this);
 		
 	}
 	
@@ -51,6 +52,10 @@ public class ControleurPraticien implements ActionListener {
 			this.afficherPraticienNoto();
 		}
 		
+		if( sourceEvenement == this.vue.getItemSelectPraticienVisite() ){
+			this.afficherPraticienVisite();
+		}
+		
 		/*else if( sourceEvenement == this.vue.getItemModifier() ){
 			this.modifierRapport();
 			}*/
@@ -65,6 +70,10 @@ public class ControleurPraticien implements ActionListener {
 		
 	private void afficherPraticienNoto(){
 		this.vue.changerVue("vuePraticienNoto");
+		}
+	
+	private void afficherPraticienVisite(){
+		this.vue.changerVue("vuePraticienVisite");
 		}
 	}
 /*	

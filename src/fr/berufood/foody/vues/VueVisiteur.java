@@ -7,10 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.TableCellRenderer;
 
 import fr.berufood.foody.editeur.EditeurBoutonSelectionVisiteur;
-import fr.berufood.foody.modeles.ModeleFoody;
 import fr.berufood.foody.modeles.ModeleVisiteur;
 import fr.berufood.foody.rendus.RenduBoutonSelectionVisiteur;
 
@@ -66,7 +64,9 @@ private void creerInterfaceVisiteurs(){
 	}
 
 	public JTable getTabVisiteur() {
+		System.out.println("Le tableau vient d'être creer");
 		return tabVisiteur;
+		
 	}
 	
 	

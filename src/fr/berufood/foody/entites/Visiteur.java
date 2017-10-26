@@ -3,7 +3,7 @@ package fr.berufood.foody.entites;
 import fr.berufood.foody.techniques.DateFr;
 
 public class Visiteur {
-
+	private String matricule;
 	private String nom ;
 	private String prenom ;
 	private String ville ; 
@@ -13,8 +13,9 @@ public class Visiteur {
 		
 	}
 	 
-	public Visiteur(String nom, String prenom,String ville,DateFr dateEmbauche) {
+	public Visiteur(String matricule,String nom, String prenom,String ville,DateFr dateEmbauche) {
 		
+		this.matricule=matricule;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.ville=ville;
@@ -60,6 +61,15 @@ public class Visiteur {
 	public void setDateEmbauche(DateFr dateEmbauche) {
 		this.dateEmbauche = dateEmbauche;
 	}
+	
+	
+	public String getMatricule() {
+		return matricule;
+	}
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+}
 
 
 	@Override
@@ -67,5 +77,7 @@ public class Visiteur {
 		return "Visiteur [nom=" + nom + ", prenom=" + prenom + ", ville=" + ville + ", dateEmbauche=" + dateEmbauche
 				+ "]";
 	}
+
+	
 	
 }

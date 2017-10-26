@@ -1,76 +1,173 @@
 package fr.berufood.foody.vues;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
 
-public class VueVoirSelectionDate extends JFrame {
+import fr.berufood.foody.editeur.EditeurBoutonSelectionVisiteur;
+import fr.berufood.foody.modeles.ModeleVisiteur;
+import fr.berufood.foody.rendus.RenduBoutonSelectionVisiteur;
 
-	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
+public class VueVoirSelectionDate extends JPanel {
+	
+private static final long serialVersionUID = 1L;
+	
+	//private ControleurVueComboCR controleur ;
+	
+	private JComboBox cbMois = new JComboBox() ;
+	private JComboBox cbAnnees = new JComboBox() ;
+	
+	private JButton bValider = new JButton("Valider") ;
+	private JButton bAnnuler = new JButton("Annuler") ;
+	
+	/** Constructeur
+	 * @param vueParente
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VueVoirSelectionDate frame = new VueVoirSelectionDate();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
+
+	public VueVoirSelectionDate() {
+		System.out.println("VueComboCR::VueComboCR()") ;
+		
+		this.creerInterfaceUtilisateur() ;
 	}
 
-	/**
-	 * Create the frame.
+	
+
+
+	public VueVoirSelectionDate(VueAccueil vue) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+	/** Créer l'interface utilisateur
+	 * 
 	 */
-	public VueVoirSelectionDate() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 511, 310);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+	private void creerInterfaceUtilisateur(){
+		System.out.println("VueComboCR::creerInterfaceUtilisateur()") ;
 		
-		JLabel lblSelectionDeLa = new JLabel("Selection de la date ");
-		lblSelectionDeLa.setBounds(163, 22, 157, 15);
-		contentPane.add(lblSelectionDeLa);
 		
-		textField = new JTextField("01");
-		textField.setBounds(240, 75, 114, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
 		
-		textField_1 = new JTextField("2000");
-		textField_1.setBounds(240, 109, 114, 19);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		Box boxPrincipale = Box.createVerticalBox() ;
+		Box boxMois = Box.createHorizontalBox() ;
+		Box boxAnnee = Box.createHorizontalBox() ;
+		Box boxEtiquetteMois = Box.createHorizontalBox() ;
+		Box boxEtiquetteAnnee = Box.createHorizontalBox() ;
+
+		Box boxLigne = Box.createHorizontalBox() ;
+		Box boxActions = Box.createHorizontalBox() ;
 		
-		JLabel lblMois = new JLabel("Mois");
-		lblMois.setBounds(77, 77, 98, 15);
-		contentPane.add(lblMois);
+		boxEtiquetteMois.add(new JLabel("Mois : ")) ;
+		boxEtiquetteAnnee.add(new JLabel("Année : ")) ;
 		
-		JLabel lblAnne = new JLabel("Année");
-		lblAnne.setBounds(77, 111, 70, 15);
-		contentPane.add(lblAnne);
+		boxMois.add(boxEtiquetteMois);
+		boxMois.add(this.cbMois) ;
 		
-		JButton btnValider = new JButton("VALIDER");
-		btnValider.setBounds(124, 181, 117, 25);
-		contentPane.add(btnValider);
+		boxAnnee.add(boxEtiquetteAnnee);
+		boxAnnee.add(this.cbAnnees) ;
+	
+		boxLigne.add(Box.createHorizontalStrut(5)) ;
+		boxLigne.add(new JSeparator()) ;
+		boxLigne.add(Box.createHorizontalStrut(5)) ;
 		
-		JButton btnAnnuler = new JButton("ANNULER");
-		btnAnnuler.setBounds(291, 181, 117, 25);
-		contentPane.add(btnAnnuler);
+		boxActions.add(Box.createHorizontalStrut(5)) ;
+		boxActions.add(this.bValider) ;
+		bValider.setActionCommand("bValider");
+		boxActions.add(Box.createHorizontalStrut(5)) ;
+
+		boxActions.add(Box.createHorizontalStrut(5)) ;
+		boxActions.add(this.bAnnuler) ;
+		bAnnuler.setActionCommand("bValider");
+		boxActions.add(Box.createHorizontalStrut(5)) ;
+		
+		boxPrincipale.add(Box.createVerticalStrut(5)) ;
+		boxPrincipale.add(boxMois) ;
+		boxPrincipale.add(Box.createVerticalStrut(5)) ;
+		boxPrincipale.add(boxAnnee) ;
+		boxPrincipale.add(Box.createVerticalStrut(5)) ;
+		boxPrincipale.add(boxLigne) ;
+		boxPrincipale.add(Box.createVerticalStrut(5)) ;
+		boxPrincipale.add(boxActions) ;
+		boxPrincipale.add(Box.createVerticalStrut(5)) ;
+		
+		
+		}
+	
+	/** 
+	* Remplir La liste déroulante des Mois
+	*/
+	private void insererItemMois(){
+		System.out.println("VueComboCR::insererItemMois()") ;
+			
+		for(int lesMois = 1 ; lesMois <=12 ; lesMois++ ){
+				cbMois.addItem(new Integer(lesMois));
+			}
+	}
+		
+	/** 
+	* Remplir La liste déroulante des Années
+	*/
+	private void insererItemAnnee(){
+		System.out.println("VueComboCR::insererItemAnnee()") ;
+			
+		GregorianCalendar annee = new GregorianCalendar() ;
+			
+		int anneeCourante = annee.get(Calendar.YEAR);
+			
+		for(int lesAnnees = anneeCourante ; lesAnnees >=2010 ; lesAnnees-- ){
+				cbAnnees.addItem(new Integer(lesAnnees));
+			}
+	}
+
+
+	/**
+	 * @return the controleur
+	 */
+	
+
+
+	/**
+	 * @return the cbMois
+	 */
+	public JComboBox getCbMois() {
+		return cbMois;
+	}
+
+
+	/**
+	 * @return the cbAnnees
+	 */
+	public JComboBox getCbAnnees() {
+		return cbAnnees;
+	}
+
+	
+
+	/**
+	 * @return the bValider
+	 */
+	public JButton getbValider() {
+		return bValider;
+	}
+
+
+	/**
+	 * @return the bAnnuler
+	 */
+	public JButton getbAnnuler() {
+		return bAnnuler;
 	}
 }

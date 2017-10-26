@@ -9,6 +9,7 @@ import javax.swing.JSeparator;
 import fr.berufood.foody.controleurs.ControleurFoody;
 import fr.berufood.foody.controleurs.ControleurPraticien;
 import fr.berufood.foody.controleurs.ControleurVisiteur;
+import fr.berufood.foody.vues.*;
 
 import javax.swing.JTable;
 import java.awt.BorderLayout;
@@ -41,8 +42,8 @@ public class VueFoody extends JFrame {
 	
 	private JMenuItem itemSelectPraticienCoef = new JMenuItem("Coef. Confiance");
 	private JMenuItem itemSelectPraticienNotoriete = new JMenuItem("Notoriete");
-	
-	private JMenuItem itemSelectMedica = new JMenuItem("Selectionner");
+	private JMenuItem itemDerniereVisite = new JMenuItem("Derniere visite");
+
 	
 	
 	private JMenuBar barreMenus = new JMenuBar() ;
@@ -51,7 +52,10 @@ public class VueFoody extends JFrame {
 	
 	private VueVisiteur vueVisiteur = new VueVisiteur() ;
 	private VuePraticienNoto vuePraticienNoto = new VuePraticienNoto();
+	private VuePraticienVisite vuePraticienVisite = new VuePraticienVisite();
 	private VueAccueil vueAccueil = new VueAccueil();
+	
+	
 	//private CardLayout clVues = new CardLayout(0,0) ;
 	
 	
@@ -86,6 +90,7 @@ public class VueFoody extends JFrame {
 		Container conteneur = this.getContentPane();
 		conteneur.setLayout(clVues);
 		
+		conteneur.add(vuePraticienVisite, "vuePraticienVisite");
 		conteneur.add(vueAccueil,"Accueil");
 		conteneur.add(vueVisiteur,"vueVisiteur");
 		conteneur.add(vuePraticienNoto, "vuePraticienNoto");
@@ -118,6 +123,7 @@ public class VueFoody extends JFrame {
 		
 		this.menuPraticiens.add(itemSelectPraticienCoef );
 		this.menuPraticiens.add(itemSelectPraticienNotoriete);
+		this.menuPraticiens.add(itemDerniereVisite);
 		
 		
 		// Ajoute les menus dans la barre de menu
@@ -197,9 +203,7 @@ public void setBarreMenusModeDeconnecte(){
 		return itemModifier;
 	}
 	
-	public JMenuItem getItemSelectPraticien() {
-		return itemSelectMedica;
-	}
+	
 	
 	public JMenuItem getItemSelectPraticienCoef() {
 		return itemSelectPraticienCoef;
@@ -207,6 +211,10 @@ public void setBarreMenusModeDeconnecte(){
 	
 	public JMenuItem getItemSelectPraticienNotoriete() {
 		return itemSelectPraticienNotoriete;
+	}
+	
+	public JMenuItem getItemSelectPraticienVisite() {
+		return itemDerniereVisite;
 	}
 
 
