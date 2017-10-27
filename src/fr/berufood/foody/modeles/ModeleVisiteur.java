@@ -1,5 +1,6 @@
 package fr.berufood.foody.modeles;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -49,7 +50,7 @@ public class ModeleVisiteur extends AbstractTableModel {
 		case 2:return String.class;
 		              
 				
-		case 3:return String.class;
+		case 3:return Date.class;
 		case 4:return String.class;
 		case 5:return String.class;
 				

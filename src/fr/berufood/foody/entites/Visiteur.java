@@ -1,5 +1,7 @@
 package fr.berufood.foody.entites;
 
+import java.sql.Date;
+
 import fr.berufood.foody.techniques.DateFr;
 
 public class Visiteur {
@@ -7,13 +9,13 @@ public class Visiteur {
 	private String nom ;
 	private String prenom ;
 	private String ville ; 
-	private DateFr dateEmbauche;
+	private Date dateEmbauche;
 	
 	public Visiteur(){
 		
 	}
 	 
-	public Visiteur(String matricule,String nom, String prenom,String ville,DateFr dateEmbauche) {
+	public Visiteur(String matricule,String nom, String prenom,String ville,Date dateEmbauche) {
 		
 		this.matricule=matricule;
 		this.nom = nom;
@@ -53,12 +55,12 @@ public class Visiteur {
 	}
 
 
-	public DateFr getDateEmbauche() {
+	public Date getDateEmbauche() {
 		return dateEmbauche;
 	}
 
 
-	public void setDateEmbauche(DateFr dateEmbauche) {
+	public void setDateEmbauche(Date dateEmbauche) {
 		this.dateEmbauche = dateEmbauche;
 	}
 	

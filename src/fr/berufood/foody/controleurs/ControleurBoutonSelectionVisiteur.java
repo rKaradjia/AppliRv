@@ -82,13 +82,9 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 	
 		Object matriculeVisiteur =  ((ModeleVisiteur) this.table.getModel()).getValueAt(this.row,this.column);
 		
-		System.out.println(matriculeVisiteur);
 		
-				switch(this.column){
-		
-				case 5 :
-					vueVoirSelectionDate= new VueVoirSelectionDate(this.vue);
-						break ;
-			}		
+					//vueVoirSelectionDate= new VueVoirSelectionDate(this.vue);
+						
+					
 	 }
 }
