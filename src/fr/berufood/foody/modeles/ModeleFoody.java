@@ -150,7 +150,7 @@ public class ModeleFoody extends AbstractTableModel {
 					visiteur.setMatricule(resultat.getString("VIS_MATRICULE"));
 				    visiteur.setNom(resultat.getString("VIS_NOM"));
 				    visiteur.setPrenom(resultat.getString("VIS_PRENOM"));
-			       // visiteur.setDateEmbauche(resultat.getDateFr("VIS_DATEEMBAUCHE"));
+			       visiteur.setDateEmbauche(resultat.getDate("VIS_DATEEMBAUCHE"));
 				    visiteur.setVille(resultat.getString("VIS_VILLE"));
 				    
 				    visiteurs.add(visiteur);
