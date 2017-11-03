@@ -17,7 +17,7 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 	private ModeleVisiteur model;
 	
 	private VueAccueil vue ;
-	private VueVoirSelectionDate vueVoirSelectionDate = new VueVoirSelectionDate();
+	private VueVoirSelectionDate vueVoirSelectionDate;
 	
 	/*public ControleurBoutonSelectionVisiteur() {
 		super();
@@ -76,13 +76,25 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 		return vueVoirSelectionDate;
 	}
 	
+	public String getMatricule (int row){
+		
+		Object matricule = ((ModeleVisiteur) this.table.getModel()).getValueAt(0,this.getRow());
+		String matriculeString = matricule.toString();
+		return matriculeString;
+		
+		
+	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//System.out.println("ControleurBoutonVisiteurs::actionPerformed()");
 	    System.out.println(this.getRow());//ok 9
 		
-	    System.out.println(((ModeleVisiteur) this.table.getModel()).getValueAt(0,this.getRow()));//ok 9
+	   // System.out.println(((ModeleVisiteur) this.table.getModel()).getValueAt(0,this.getRow()));//ok 9
+	    
+	    this.getMatricule(this.getRow());
+	    
 	    
 		//Object matriculeVisiteur =  ((ModeleVisiteur) this.table.getModel()).getValueAt(this.getRow(),0);//don't work
 		                         
@@ -92,7 +104,7 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 		
 		//System.out.println(matriculeVisiteurString);
 		
-	  
+	    vueVoirSelectionDate = new VueVoirSelectionDate();
 	    vueVoirSelectionDate.setVisible(true);
 						
 					

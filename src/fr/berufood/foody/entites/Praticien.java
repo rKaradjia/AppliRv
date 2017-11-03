@@ -6,6 +6,7 @@ import fr.berufood.foody.techniques.DateFr;
 
 public class Praticien {
 
+	private int num;
 	private String nom ;
 	private String prenom ;
 	private String adresse ; 
@@ -20,9 +21,10 @@ public class Praticien {
     	
     }
 
-	public Praticien(String nom, String prenom, String adresse, String cp, String ville, float coefnoto, String code,
+	public Praticien(int num,String nom, String prenom, String adresse, String cp, String ville, float coefnoto, String code,
 			Date derniereVisite) {
 		super();
+		this.num=num;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
@@ -43,6 +45,21 @@ public class Praticien {
 		this.prenom = prenom;
 		this.derniereVisite=derniereVisite;
 	}
+	
+	public int getNum() {
+		return num;
+	}
+
+
+
+
+
+
+	public void setNom(int num) {
+		this.num = num;
+	}
+
+
 	
 
 	public String getNom() {

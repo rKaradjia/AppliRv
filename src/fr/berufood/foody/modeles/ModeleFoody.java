@@ -18,6 +18,7 @@ import java.sql.Statement;
 
 import fr.berufood.foody.controleurs.ControleurAuthentification;
 import fr.berufood.foody.entites.Praticien;
+import fr.berufood.foody.entites.RapportVisite;
 import fr.berufood.foody.entites.Utilisateur;
 import fr.berufood.foody.entites.Visiteur;
 import fr.berufood.foody.techniques.ConnexionBD;
@@ -257,6 +258,11 @@ public class ModeleFoody extends AbstractTableModel {
 					e.printStackTrace();
 				}
 		 return lesPraticiens;
+	}
+
+	public static List<RapportVisite> getLesRapportDateVisiteur() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	}
 
