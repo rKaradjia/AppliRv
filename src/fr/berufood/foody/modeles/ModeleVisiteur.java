@@ -109,12 +109,12 @@ public class ModeleVisiteur extends AbstractTableModel {
 		this.fireTableDataChanged();
 	}
 
-	public String getMatriculeVisiteur(int index) {
+	/*public String getMatriculeVisiteur(int index) {
 		
 			String resultat = lesVisiteurs.get(index).getMatricule() ;
 			 
 			return resultat;
 	
-	}
+	}*/
 
 }

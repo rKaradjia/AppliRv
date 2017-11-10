@@ -2,130 +2,194 @@ package fr.berufood.foody.vues;
 
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
 
+import fr.berufood.foody.controleurs.ControleurAuthentification;
 import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
-import fr.berufood.foody.editeur.EditeurBoutonSelectionVisiteur;
-import fr.berufood.foody.modeles.ModeleVisiteur;
-import fr.berufood.foody.rendus.RenduBoutonSelectionVisiteur;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import fr.berufood.foody.controleurs.ControleurSelectionDate;
 
+public class VueVoirSelectionDate extends JDialog   {
 
-public class VueVoirSelectionDate extends JFrame {
+	VueVisiteur vueParente ;
 	
-	private JPanel contentPane;
-	private ControleurBoutonSelectionVisiteur controleurParent;
-	/*private JComboBox comboBox;
-	private JComboBox comboBox_1;*/
+	ControleurSelectionDate controleur ;
+	private String moisString;
+	private String anneeString;
 	
-
-	/**
-	 * Launch the application.
+	
+	
+	String [] mois = {"...","01","02","03","04","05","06","07","08","09","10","11","12"};
+	private JComboBox combobox = new JComboBox(mois) ;
+	String []annee = {"...","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018"};
+	private JComboBox combobox_1 = new JComboBox(annee) ;
+	private JButton bValider = new JButton("Valider") ;
+	private JButton bAnnuler = new JButton("Annuler") ;
+	
+	public VueVoirSelectionDate(VueVisiteur vueParente){
+		// Appel du constructeur de la super-classe
+		//	Troisième argument : true pour indiquer que la boîte de dialogue est modale 
+		super() ;
+		
+		// Mémorise la vue parente qui est la fenêtre principale de l'application
+		this.vueParente = vueParente ;
+		
+		// Crée le formulaire de saisie
+		this.creerInterfaceUtilisateur() ;
+		
+		// Redimensionne la boîte de dialogue (dimensions adaptées aux composants qui s'y trouvent)
+		this.pack() ;
+		
+		// Positionne la boîte de dialogue au centre de l'écran
+		this.setLocationRelativeTo(null) ;
+		
+		// Empêche le redimensionnement par l'utilisateur
+		this.setResizable(false);
+		
+		// Crée le controleur associé et lui indique que le vue qui lui
+		// est associée est elle-même
+		//this.controleur = new ControleurAuthentification(this) ;
+	//	ControleurBoutonSelectionVisiteur
+		// Affiche la boîte de dialogue
+		this.setVisible(true) ;
+		
+	}
+	
+	
+	
+	
+	/** Initialiser les champs de saisie
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VueVoirSelectionDate frame = new VueVoirSelectionDate();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public void initialiser(){
+				
+		// VOTRE CODE : 
+		// Afficher une chaîne de caractères vide dans les deux
+		// champs de saisie (login et MDP)
+		//this.tfLogin.setText("");
+		
+		//this.pfMdp.setText("");
+		
 	}
-
 	
-	
-	
-	public VueVoirSelectionDate() {
-		setLocationRelativeTo(null);
-		setResizable(false);
-		getContentPane().setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100,100,511,310);
-		
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		
-		setBackground(Color.GRAY);
-		setForeground(Color.WHITE);
-		getContentPane().setLayout(null);
-		
-		
-		String[] mois = new String[]{"...","01","02","03","04","05","06","07","08","09","10","11","12"};
-		JComboBox comboBox = new JComboBox(mois);
-		comboBox.setBounds(259, 119, 145, 24);
-		contentPane.add(comboBox);
-		
-		String[] annee = new String[]{"...","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018"};
-		JComboBox comboBox_1 = new JComboBox(annee);
-		comboBox_1.setBounds(259, 168, 145, 24);
-		contentPane.add(comboBox_1);
-		
-		JLabel lblMois = new JLabel("Mois ");
-		lblMois.setBounds(101, 124, 70, 15);
-		contentPane.add(lblMois);
-		
-		JLabel lblAnnee = new JLabel("Annee");
-		lblAnnee.setBounds(101, 173, 70, 15);
-		contentPane.add(lblAnnee);
-		
-		JLabel lblVeuillezChoisirUne = new JLabel("Veuillez choisir une date");
-		lblVeuillezChoisirUne.setBounds(259, 46, 215, 45);
-		contentPane.add(lblVeuillezChoisirUne);
-		
-		JButton btnValider = new JButton("Valider");
-		btnValider.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				
-			}
-		});
-		btnValider.setBounds(115, 232, 117, 25);
-		contentPane.add(btnValider);
-		
-		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(306, 232, 117, 25);
-		contentPane.add(btnAnnuler);
-	}
-
-
-
-
-	/**
-	 * @return the controleurParent
+	/** Créer l'interface utilisateur
+	 * 
 	 */
-	public ControleurBoutonSelectionVisiteur getControleurParent() {
-		return controleurParent;
+	private void creerInterfaceUtilisateur(){
+		System.out.println("VueAuthentification::creerInterfaceUtilisateur()") ;
+		
+		Container conteneur = this.getContentPane() ;
+		
+		Box boxPrincipale = Box.createVerticalBox() ;
+		Box boxChamps = Box.createHorizontalBox() ;
+		Box boxEtiquettes = Box.createVerticalBox() ;
+		Box boxSaisies = Box.createVerticalBox() ;
+		Box boxLigne = Box.createHorizontalBox() ;
+		Box boxActions = Box.createHorizontalBox() ;
+		
+		boxEtiquettes.add(new JLabel("Login : ")) ;
+		boxEtiquettes.add( Box.createVerticalStrut(10) ) ;
+		boxEtiquettes.add(new JLabel("MDP : ")) ;
+		
+		boxSaisies.add( this.combobox) ;
+		boxSaisies.add( Box.createVerticalStrut(10) ) ;
+		boxSaisies.add( this.combobox_1) ;
+		
+		boxLigne.add( Box.createHorizontalStrut( 10 ) ) ;
+		boxLigne.add( new JSeparator() ) ;
+		boxLigne.add( Box.createHorizontalStrut( 10 ) ) ;
+		
+		// VOTRE CODE :
+		// Agence les boutons "Se connecter" et "Annuler"
+		boxActions.add( Box.createHorizontalStrut( 10 ) ) ;
+		boxActions.add( this.bValider ) ;
+		boxActions.add( Box.createHorizontalStrut( 10 ) ) ;
+		boxActions.add( this.bAnnuler ) ;
+		boxActions.add( Box.createHorizontalStrut( 10 ) ) ;
+		
+		
+		
+		
+		boxChamps.add( Box.createHorizontalStrut( 10 ) ) ;
+		boxChamps.add( boxEtiquettes ) ;
+		boxChamps.add( Box.createHorizontalStrut( 10 ) ) ;
+		boxChamps.add( boxSaisies ) ;
+		boxChamps.add( Box.createHorizontalStrut( 10 ) ) ;
+		
+		boxPrincipale.add( Box.createVerticalStrut( 10 ) ) ;
+		boxPrincipale.add( boxChamps ) ;
+		boxPrincipale.add( Box.createVerticalStrut( 10 ) ) ;
+		boxPrincipale.add( boxLigne ) ;
+		boxPrincipale.add( Box.createVerticalStrut( 10 ) ) ;
+		boxPrincipale.add( boxActions ) ;
+		boxPrincipale.add( Box.createVerticalStrut( 10 ) ) ;
+		
+		conteneur.add(boxPrincipale) ;
+		
+		
+		// Le code qui suit permet d'adapter la taille du bouton
+		// "Annuler" par rapport à celle du bouton "Se connecter"
+		
+		Dimension dimensionBouton = this.bValider.getPreferredSize() ;
+		
+		this.bAnnuler.setPreferredSize(dimensionBouton) ;
+		System.out.println(this.bAnnuler.getPreferredSize()) ;
+		this.bAnnuler.setMaximumSize(dimensionBouton) ;
+		System.out.println(this.bAnnuler.getPreferredSize()) ;
+		this.bAnnuler.setMinimumSize(dimensionBouton) ;
+		System.out.println(this.bAnnuler.getPreferredSize()) ;
+		
+	}
+
+	public String getmois() {
+		Object combo = combobox.getSelectedItem();
+		String mois = combo.toString();
+		System.out.println(mois);
+		return mois;
+	}
+
+	public String getannee() {
+		Object combo = combobox_1.getSelectedItem();
+		String annee = combo.toString();
+		System.out.println(annee);
+		return annee;
+	}
+
+	public JComboBox getCombobox() {
+		return combobox;
 	}
 
 
 
 
-	/**
-	 * @param controleurParent the controleurParent to set
-	 */
-	public void setControleurParent(ControleurBoutonSelectionVisiteur controleurParent) {
-		this.controleurParent = controleurParent;
+	
+
+
+
+	public JComboBox getCombobox_1() {
+		return combobox_1;
 	}
+
+
+
+
+
+
+
+
+	public JButton getbValider() {
+		return bValider;
+	}
+
+	public JButton getbAnnuler() {
+		return bAnnuler;
+	}
+
 }

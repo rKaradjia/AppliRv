@@ -54,6 +54,7 @@ public class VueFoody extends JFrame {
 	private VuePraticienNoto vuePraticienNoto = new VuePraticienNoto();
 	private VuePraticienVisite vuePraticienVisite = new VuePraticienVisite();
 	private VueAccueil vueAccueil = new VueAccueil();
+	//private VueRapportParDate vueRapportParDate = new VueRapportParDate();
 	
 	
 	//private CardLayout clVues = new CardLayout(0,0) ;
@@ -94,6 +95,7 @@ public class VueFoody extends JFrame {
 		conteneur.add(vueAccueil,"Accueil");
 		conteneur.add(vueVisiteur,"vueVisiteur");
 		conteneur.add(vuePraticienNoto, "vuePraticienNoto");
+		//conteneur.add(vueRapportParDate, "vueRapportParDate");
 		this.clVues.show(conteneur,"Accueil") ;
 		
 		// Crée le controleur associé et lui indique que le vue qui lui

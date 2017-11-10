@@ -1,10 +1,13 @@
 package fr.berufood.foody.controleurs;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JTable;
 
-
+import fr.berufood.foody.entites.Visiteur;
+import fr.berufood.foody.modeles.ModeleFoody;
+import fr.berufood.foody.modeles.ModeleRapportDateVisiteur;
 import fr.berufood.foody.modeles.ModeleVisiteur;
 
 import fr.berufood.foody.vues.*;
@@ -14,40 +17,36 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 	private int row ;
 	private int column ;
 	private JTable table ;
-	private ModeleVisiteur model;
 	
-	private VueAccueil vue ;
+	private String matricule;
+	
+
+	private VueVisiteur vue ;
 	private VueVoirSelectionDate vueVoirSelectionDate;
-	
+	private ModeleFoody modele;
+	ArrayList<Visiteur> lesVisiteurs = new ArrayList<Visiteur>(ModeleFoody.getVisiteur());
 	/*public ControleurBoutonSelectionVisiteur() {
 		super();
 		System.out.println("ControleurBoutonVisiteurs::ControleurBoutonVisiteurs");
 	}*/
 
-	/**
-	 * @return the row
-	 */
+	
 	public int getRow() {
 		return row;
 	}
 
-	/**
-	 * @return the column
-	 */
+	
 	public int getColumn() {
 		return column;
 	}
 
-	/**
-	 * @return the table
-	 */
+	
 	public JTable getTable() {
 		return table;
 	}
 
-	/**
-	 * @param row the row to set
-	 */
+	
+	
 	public void setRow(int row) {
 		this.row = row;
 	}
@@ -60,40 +59,41 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 		this.column = column;
 	}
 
-	/**
-	 * @param table the table to set
-	 */
+	
 	public void setTable(JTable table) {
 		this.table = table;
 	}
 
 	
-
-	/**
-	 * @return the vueComBoCR
-	 */
-	public VueVoirSelectionDate getVueSelectionDate() {
-		return vueVoirSelectionDate;
+	
+	public String getMatricule(){
+		
+		String matricule = lesVisiteurs.get(getRow()).getMatricule();
+		
+		return matricule;
 	}
 	
-	public String getMatricule (int row){
-		
-		Object matricule = ((ModeleVisiteur) this.table.getModel()).getValueAt(0,this.getRow());
-		String matriculeString = matricule.toString();
-		return matriculeString;
-		
-		
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
 	}
 	
+	public void getVueSelectionDate(){
+		
+		VueVoirSelectionDate vueSelectDate = new VueVoirSelectionDate(vue);
+		vueSelectDate.setVisible(true);
+		
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//System.out.println("ControleurBoutonVisiteurs::actionPerformed()");
 	    System.out.println(this.getRow());//ok 9
-		
+	    String test = this.getMatricule();
+	    System.out.println(test);
+	    this.setMatricule(test);
 	   // System.out.println(((ModeleVisiteur) this.table.getModel()).getValueAt(0,this.getRow()));//ok 9
 	    
-	    this.getMatricule(this.getRow());
+	   
 	    
 	    
 		//Object matriculeVisiteur =  ((ModeleVisiteur) this.table.getModel()).getValueAt(this.getRow(),0);//don't work
@@ -104,8 +104,7 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 		
 		//System.out.println(matriculeVisiteurString);
 		
-	    vueVoirSelectionDate = new VueVoirSelectionDate();
-	    vueVoirSelectionDate.setVisible(true);
+	    this.getVueSelectionDate();
 						
 					
 	 }

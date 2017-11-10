@@ -2,12 +2,14 @@ package fr.berufood.foody.modeles;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
@@ -21,6 +23,7 @@ import fr.berufood.foody.entites.Praticien;
 import fr.berufood.foody.entites.RapportVisite;
 import fr.berufood.foody.entites.Utilisateur;
 import fr.berufood.foody.entites.Visiteur;
+import fr.berufood.foody.rendus.TablePanelRapportDateVisiteur;
 import fr.berufood.foody.techniques.ConnexionBD;
 import fr.berufood.foody.techniques.ConnexionException;
 import fr.berufood.foody.vues.VueAuthentification;
@@ -43,7 +46,7 @@ public class ModeleFoody extends AbstractTableModel {
 	/** Constructeur
 	 * 
 	 */
-	private ModeleFoody(){
+	public ModeleFoody(){
 		super() ;
 		
 		
@@ -260,11 +263,68 @@ public class ModeleFoody extends AbstractTableModel {
 		 return lesPraticiens;
 	}
 
-	public static List<RapportVisite> getLesRapportDateVisiteur() {
-		// TODO Auto-generated method stub
-		return null;
+	public static List<RapportVisite> getRapportVisite(String matricule, String jtDateMois,String jtDateAnnee){
+        List<RapportVisite> lesRapportVisites = new ArrayList<RapportVisite>() ;
+        ResultSet resultat = null;
+        Connection connexion = null;
+        //Statement st = connexion.createStatement();
+        PreparedStatement requetePreparee = null;
+       
+        try {
+            try {
+                connexion = ConnexionBD.getConnexion();
+            } catch (ConnexionException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+       
+            String sql = "Select * from RAPPORT_VISITE where VIS_MATRICULE = ? and RAP_DATE like ?";
+            PreparedStatement pst = (PreparedStatement) connexion.prepareStatement(sql);
+       
+            pst.setString(1,matricule);
+            Integer dateMois = Integer.parseInt(jtDateMois.getText());
+            Integer dateAnnee = Integer.parseInt(jtDateAnnee.getText());
+            String dateEntiere = dateAnnee +"-"+ dateMois + "%";
+            pst.setString(2, dateEntiere);
+       
+       
+            pst.executeQuery();
+           
+           
+           
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();   
+        }
+	
+	
+	
+	
+      public static ResultSet getLeRapport() {
+		
+		Connection connexion = ConnexionBD.getConnexion();
+	    
+		
+	    try {
+	    Statement st =connexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,       
+	    ResultSet.CONCUR_READ_ONLY);
+	    //String req = "SELECT * FROM RAPPORT_VISITE where VIS_MATRICULE = '"+matricule+"' ";
+	    ResultSet rs = st.executeQuery(req);
+	    
+	  
+	        
+	   
+	    } 
+	    catch (Exception e ) {
+	      e.printStackTrace();
+	    }
+	  
+	
 	}
-	}
+}
+
+
+
 
 	
 
