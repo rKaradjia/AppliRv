@@ -66,11 +66,12 @@ public class ControleurSelectionDate implements ActionListener{
 		}
 		
 		if(sourceEvenement==this.vue.getbValider()){
-				String mois = (String) this.vue.getCombobox().getSelectedItem();
+				String mois =this.vue.getCombobox().getSelectedItem().toString();
 				System.out.println(mois);
+				this.vue.setMoisString(mois);
 				String annee = this.vue.getCombobox_1().getSelectedItem().toString();
 				System.out.println(annee);
-			
+				this.vue.setAnneeString(annee);
 				/*String TfLogin = Login.getText();
 				String Pfmdp = Mdp.getText();*/
 				System.out.println(mois);
@@ -82,6 +83,7 @@ public class ControleurSelectionDate implements ActionListener{
 				vue.dispose();
 				
 				VueRapportParDate vuerapport=new VueRapportParDate();
+				vuerapport.setVisible(true);
 				
 		
 	    }

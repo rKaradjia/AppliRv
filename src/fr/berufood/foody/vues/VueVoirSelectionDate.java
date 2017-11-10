@@ -168,11 +168,6 @@ public class VueVoirSelectionDate extends JDialog   {
 
 
 
-
-	
-
-
-
 	public JComboBox getCombobox_1() {
 		return combobox_1;
 	}
@@ -180,6 +175,34 @@ public class VueVoirSelectionDate extends JDialog   {
 
 
 
+
+
+
+
+	public String getMoisString() {
+		return moisString;
+	}
+
+
+
+
+	public void setMoisString(String moisString) {
+		this.moisString = moisString;
+	}
+
+
+
+
+	public String getAnneeString() {
+		return anneeString;
+	}
+
+
+
+
+	public void setAnneeString(String anneeString) {
+		this.anneeString = anneeString;
+	}
 
 
 

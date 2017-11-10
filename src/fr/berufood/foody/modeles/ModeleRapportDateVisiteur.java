@@ -9,6 +9,7 @@ import fr.berufood.foody.entites.Praticien;
 import fr.berufood.foody.entites.RapportVisite;
 import fr.berufood.foody.entites.Visiteur;
 import fr.berufood.foody.techniques.DateFr;
+import fr.berufood.foody.vues.VueVoirSelectionDate;
 
 
 
@@ -16,7 +17,8 @@ import fr.berufood.foody.techniques.DateFr;
 public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	
 	private ControleurBoutonSelectionVisiteur controleur;
-	private List<RapportVisite> lesRapports = ModeleFoody.getRapportVisite(this.controleur.getMatricule(),this.) ;
+	private VueVoirSelectionDate vue;
+	private List<RapportVisite> lesRapports = ModeleFoody.getRapportVisite(this.controleur.getMatricule(),this.vue.getAnneeString(),this.vue.getAnneeString()) ;
 	
 	
 	/*Note localisation des informations suivantes Matricule : ControleurBoutonSelectionVisiteur variable matricule 

@@ -3,6 +3,7 @@ package fr.berufood.foody.vues;
 import java.awt.Dimension;
 
 import javax.swing.Box;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -12,7 +13,7 @@ import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
 import fr.berufood.foody.modeles.ModelePraticienNoto;
 import fr.berufood.foody.modeles.ModeleRapportDateVisiteur;
 
-public class VueRapportParDate extends JPanel {
+public class VueRapportParDate extends JFrame {
 	
 	
 	private ControleurBoutonSelectionVisiteur controleurParent;
