@@ -17,8 +17,8 @@ import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
 import fr.berufood.foody.controleurs.ControleurSelectionDate;
 
 public class VueVoirSelectionDate extends JDialog   {
-	//VueFoody vueParente ;
-	VueVisiteur vueParente ;
+	VueFoody vueParente ;
+	//VueVisiteur vueParente ;
 	//VueFoody vuePr ;
 	ControleurSelectionDate controleur ;
 	private String mois;
@@ -33,10 +33,10 @@ public class VueVoirSelectionDate extends JDialog   {
 	private JButton bValider = new JButton("Valider") ;
 	private JButton bAnnuler = new JButton("Annuler") ;
 	
-	public VueVoirSelectionDate(VueVisiteur vueParente){
+	public VueVoirSelectionDate(VueFoody vueParente){
 		// Appel du constructeur de la super-classe
 		//	Troisième argument : true pour indiquer que la boîte de dialogue est modale 
-		super() ;
+		super(vueParente,"selection de la date",true) ;
 		
 		// Mémorise la vue parente qui est la fenêtre principale de l'application
 		this.vueParente = vueParente ;
@@ -55,10 +55,10 @@ public class VueVoirSelectionDate extends JDialog   {
 		
 		// Crée le controleur associé et lui indique que le vue qui lui
 		// est associée est elle-même
-		//this.controleur = new ControleurAuthentification(this) ;
-	//	ControleurBoutonSelectionVisiteur
+		this.controleur = new ControleurSelectionDate(this) ;
+		
 		// Affiche la boîte de dialogue
-		this.setVisible(true) ;
+		//this.setVisible(true) ;
 		
 	}
 	
@@ -180,6 +180,7 @@ public class VueVoirSelectionDate extends JDialog   {
 
 
 	public String getMois() {
+		System.out.println("Recuperation du mois pour les Rv");
 		return mois;
 	}
 
@@ -194,6 +195,8 @@ public class VueVoirSelectionDate extends JDialog   {
 
 
 	public String getAnnee() {
+		System.out.println("Recuperation de l'année pour les Rv");
+		
 		return annee;
 	}
 

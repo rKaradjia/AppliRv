@@ -6,10 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
-import fr.berufood.foody.entites.Praticien;
 import fr.berufood.foody.entites.RapportVisite;
-import fr.berufood.foody.entites.Visiteur;
-import fr.berufood.foody.techniques.DateFr;
 import fr.berufood.foody.vues.VueVoirSelectionDate;
 
 
@@ -19,7 +16,16 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	
 	private ControleurBoutonSelectionVisiteur controleur;
 	private VueVoirSelectionDate vue;
-	private List<RapportVisite> lesRapports = ModeleFoody.getRapportVisite(this.controleur.getMatricule(),this.vue.getMois(),this.vue.getAnnee()) ;
+	private String matricule = controleur.getMatricule();
+	private String mois = vue.getMois();
+	private String annee = vue.getAnnee();
+	private List<RapportVisite> lesRapports = ModeleFoody.getRapportVisite(matricule,mois,annee) ;
+			
+			//ModeleFoody.getRapportVisite("a93","10","2017") ; TEST
+	
+	//ModeleFoody.getRapportVisite(this.controleur.getMatricule(),this.vue.getMois(),this.vue.getAnnee()) ;
+						//FINALE
+	
 	
 	
 	/*Note localisation des informations suivantes Matricule : ControleurBoutonSelectionVisiteur variable matricule 
@@ -67,7 +73,7 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 		switch (columnIndex){
 		case 0: return Integer.class;
 				
-		case 1:return String.class;
+		case 1:return Integer.class;
 		              
 				
 		case 2:return String.class;
@@ -97,7 +103,7 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 				
 				
 			case 1:
-				return lesRapports.get(rowIndex).getLePraticien().getNom();
+				return lesRapports.get(rowIndex).getNumPraticien();
 					
 				
 				

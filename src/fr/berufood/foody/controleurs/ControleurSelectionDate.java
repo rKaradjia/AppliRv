@@ -18,10 +18,11 @@ public class ControleurSelectionDate implements ActionListener{
 	
 	// VOTRE CODE :
 	// Déclarer et initialiser l'attribut modele
-	private ModeleFoody modele ;			
+	//private ModeleFoody modele ;			
 	//
 	private VueVoirSelectionDate vue;
-	
+	private VueFoody vuepr;
+	private ControleurBoutonSelectionVisiteur ctrl;
 	
 	//private VueFoody vue1 ;
 	
@@ -73,7 +74,7 @@ public class ControleurSelectionDate implements ActionListener{
 				String annee = this.vue.getCombobox_1().getSelectedItem().toString();
 				System.out.println(annee);
 				this.vue.setAnnee(annee);
-				
+				//String matricule = ctrl.getMatriculeList();
 				/*String TfLogin = Login.getText();
 				String Pfmdp = Mdp.getText();*/
 				System.out.println(mois);
@@ -85,7 +86,7 @@ public class ControleurSelectionDate implements ActionListener{
 				vue.dispose();
 				
 				VueRapportParDate vuerapport=new VueRapportParDate();
-				vuerapport.setVisible(true);
+				
 				
 		
 	    }

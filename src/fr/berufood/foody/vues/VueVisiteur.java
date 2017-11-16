@@ -38,7 +38,7 @@ private void creerInterfaceVisiteurs(){
 		this.tabVisiteur=new JTable(modeleTabVisiteur);
 		this.tabVisiteur.setRowHeight(30);//hauteur de chaques lignes
 		JScrollPane spLivreurs= new JScrollPane(this.tabVisiteur);
-		spLivreurs.setPreferredSize(new Dimension(1090,420));// y integre un srool d'une dimension de 1090*420
+		spLivreurs.setPreferredSize(new Dimension(1090,720));// y integre un srool d'une dimension de 1090*420
 		//tabVisiteur.setDefaultRenderer(Object.class, new RenduCelluleCourse());
 		tabVisiteur.getColumn("Lecture rapports").setCellRenderer(new RenduBoutonSelectionVisiteur());
 		tabVisiteur.getColumn("Lecture rapports").setCellEditor(new EditeurBoutonSelectionVisiteur());

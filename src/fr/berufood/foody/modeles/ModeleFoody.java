@@ -1,11 +1,8 @@
 package fr.berufood.foody.modeles;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.sql.*;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,9 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 import com.mysql.jdbc.PreparedStatement;
-
-import java.sql.Connection;
-import java.sql.Statement;
 
 import fr.berufood.foody.controleurs.ControleurAuthentification;
 import fr.berufood.foody.entites.Praticien;
@@ -264,6 +258,8 @@ public class ModeleFoody extends AbstractTableModel {
 	}
 
 	public static List<RapportVisite> getRapportVisite(String matricule, String jtDateMois,String jtDateAnnee){
+		System.out.println(matricule +"Dans modele");
+		
         List<RapportVisite> lesRapportVisites = new ArrayList<RapportVisite>() ;
         ResultSet resultat = null;
         Connection connexion = null;
@@ -288,9 +284,33 @@ public class ModeleFoody extends AbstractTableModel {
             pst.setString(2, dateEntiere);
        
        
-            pst.executeQuery();
+           resultat= pst.executeQuery();
            
-           
+            while(resultat.next()){//tant que il y a des rsats a afficher BOOLEAN
+        	/*private Visiteur 	Visiteur;          RAP_NUM       | int(11)      | NO   | PRI | 0       |       |
+| PRA_NUM       | int(11)      | YES  | MUL | NULL    |       |
+| RAP_BILAN     | varchar(510) | YES  |     |         |       |
+| RAP_DATE      | date         | YES  |     | NULL    |       |
+| RAP_DATEREDAC | date         | YES  |     | NULL    |       |
+
+	private int 		numRapport;
+	private Praticien 	lePraticien;	
+	private String 		bilan;
+	private Date 		dateVisite;
+	private Date 		dateRedac;*/	
+				int numRapport = resultat.getInt("RAP_NUM");
+				int numPraticien = resultat.getInt("PRA_NUM");
+				String bilan =resultat.getString("RAP_BILAN");
+				Date dateVisite = resultat.getDate("RAP_DATE");
+				Date dateRedac = resultat.getDate("RAP_DATEREDAC");
+				
+				
+			    
+			     lesRapportVisites.add(new RapportVisite(numRapport,numPraticien,bilan,dateVisite,dateRedac));
+				
+				//	return visiteurs;
+				
+			}
            
         } catch (SQLException e) {
             // TODO Auto-generated catch block

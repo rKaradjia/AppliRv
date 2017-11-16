@@ -69,14 +69,13 @@ public class ControleurAuthentification implements ActionListener{
 				System.out.println(Pfmdp);
 				System.out.println(TfLogin);
 				
-				//this.modele.seConnecter(TfLogin,Pfmdp);
 				
 				try {
 					Boolean co = this.modele.seConnecter(TfLogin, Pfmdp,vue);
-					System.out.println("co ==true");
+					System.out.println("Resultat du login");
 					if(co==true){
-						System.out.println("yes");
-						VueFoody vueParente = (VueFoody) this.vue.getParent() ;
+						System.out.println("yes co ok");
+						VueFoody vueParente = (VueFoody) this.vue.getParent();
 					
 					    vueParente.setBarreMenusModeConnecte() ;
 					    }

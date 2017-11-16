@@ -29,6 +29,7 @@ public class RapportVisite {
 	private Visiteur 	Visiteur;
 	private int 		numRapport;
 	private Praticien 	lePraticien;	
+	private int numPraticien;
 	private String 		bilan;
 	private Date 		dateVisite;
 	private Date 		dateRedac;
@@ -36,21 +37,42 @@ public class RapportVisite {
 	
 	/**
 	 * Constructeur sans paramètre
+	 * @param dateRedac2 
+	 * @param dateVisite2 
+	 * @param bilan2 
+	 * @param numPraticien 
+	 * @param numRapport2 
 	 */
-	public RapportVisite() {
+	public RapportVisite(int numRapport, int numPraticien, String bilan, Date dateVisite, Date dateRedac) {
 		
-		super();
+		this.numRapport 	= numRapport;
+		this.lePraticien 	= lePraticien;
+		this.numPraticien=numPraticien;
+		this.dateVisite 	= dateVisite;
+		this.bilan 			= bilan;
+		this.dateRedac=dateRedac;
 		
 	}
 
 	
+	public int getNumPraticien() {
+		return numPraticien;
+	}
+
+
+	public void setNumPraticien(int numPraticien) {
+		this.numPraticien = numPraticien;
+	}
+
+
 	public RapportVisite(Visiteur leVisiteur, int numRapport,
-			Praticien lePraticien, String bilan, Date dateVisite,Date dateRedac) {
+			 int numPraticien, String bilan, Date dateVisite,Date dateRedac) {
 		
 		super();
 		this.Visiteur 	= Visiteur;
 		this.numRapport 	= numRapport;
-		this.lePraticien 	= lePraticien;
+		this.numPraticien=numPraticien;
+		//this.lePraticien 	= lePraticien;
 		this.dateVisite 	= dateVisite;
 		this.bilan 			= bilan;
 		this.dateRedac=dateRedac;
@@ -80,7 +102,7 @@ public class RapportVisite {
 	}
 
 
-	public Praticien getLePraticien() {
+/*	public Praticien getLePraticien() {
 		return lePraticien;
 	}
 
@@ -88,7 +110,7 @@ public class RapportVisite {
 	public void setLePraticien(Praticien lePraticien) {
 		this.lePraticien = lePraticien;
 	}
-
+*/
 
 	public String getBilan() {
 		return bilan;
