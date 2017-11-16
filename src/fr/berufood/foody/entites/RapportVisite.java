@@ -14,7 +14,7 @@ import java.sql.Date;
  */
 public class RapportVisite {
 
-	/*VIS_MATRICULE | RAP_NUM | PRA_NUM | RAP_BILAN                            | RAP_DATE   |
+	/*VIS_MATRICULE | RAP_NUM | PRA_NUM | RAP_BILAN                            | RAP_DATE   |RAP_DATEREDAC 
 	+---------------+---------+---------+--------------------------------------+------------+
 	| a17           |       1 |       1 | coucou                               | NULL       |
 	| a93           |       2 |       3 | CONVAINCU                            | 2017-10-22 |
@@ -29,8 +29,9 @@ public class RapportVisite {
 	private Visiteur 	Visiteur;
 	private int 		numRapport;
 	private Praticien 	lePraticien;	
-	private Date 		dateRapport;
 	private String 		bilan;
+	private Date 		dateVisite;
+	private Date 		dateRedac;
 	//private boolean 	lecture;
 	
 	/**
@@ -44,106 +45,89 @@ public class RapportVisite {
 
 	
 	public RapportVisite(Visiteur leVisiteur, int numRapport,
-			Praticien lePraticien, Date dateRapport, String bilan, fr.berufood.foody.entites.Visiteur Visiteur) {
+			Praticien lePraticien, String bilan, Date dateVisite,Date dateRedac) {
 		
 		super();
 		this.Visiteur 	= Visiteur;
 		this.numRapport 	= numRapport;
 		this.lePraticien 	= lePraticien;
-		this.dateRapport 	= dateRapport;
+		this.dateVisite 	= dateVisite;
 		this.bilan 			= bilan;
+		this.dateRedac=dateRedac;
 		
 	}
 
 	
-	public Visiteur getLeVisiteur() {
+	
+
+	public Visiteur getVisiteur() {
 		return Visiteur;
 	}
 
-	/**
-	 * @param leVisiteur the leVisiteur to set
-	 */
-	public void setLeVisiteur(Visiteur Visiteur) {
-		this.Visiteur = Visiteur;
+
+	public void setVisiteur(Visiteur visiteur) {
+		Visiteur = visiteur;
 	}
 
-	/**
-	 * @return the lePraticien
-	 */
-	public Praticien getLePraticien() {
-		return lePraticien;
-	}
 
-	/**
-	 * @param lePraticien the lePraticien to set
-	 */
-	public void setLePraticien(Praticien lePraticien) {
-		this.lePraticien = lePraticien;
-	}
-
-	
 	public int getNumRapport() {
 		return numRapport;
 	}
 
-	/**
-	 * @param numeroRapport the numeroRapport to set
-	 */
+
 	public void setNumRapport(int numRapport) {
 		this.numRapport = numRapport;
 	}
-	
-	/**
-	 * @return the bilan
-	 */
+
+
+	public Praticien getLePraticien() {
+		return lePraticien;
+	}
+
+
+	public void setLePraticien(Praticien lePraticien) {
+		this.lePraticien = lePraticien;
+	}
+
+
 	public String getBilan() {
 		return bilan;
 	}
 
-	/**
-	 * @param bilan the bilan to set
-	 */
+
 	public void setBilan(String bilan) {
 		this.bilan = bilan;
 	}
 
-	/**
-	 * @return the motif
-	 */
-	
-	/**
-	 * @return the lecture
-	 */
-	/*public boolean isLecture() {
-		return lecture;
+
+	public Date getDateVisite() {
+		return dateVisite;
 	}
 
-	
-	
-	public void setLecture(boolean lecture) {
-		this.lecture = lecture;
+
+	public void setDateVisite(Date dateVisite) {
+		this.dateVisite = dateVisite;
 	}
 
-	/**
-	 * @return the dateRapport
-	 */
-	public Date getDateRapport() {
-		return dateRapport;
+
+	public Date getDateRedac() {
+		return dateRedac;
 	}
 
-	/**
-	 * @param dateRapport the dateRapport to set
-	 */
-	public void setDateRapport(Date dateRapport) {
-		this.dateRapport = dateRapport;
+
+	public void setDateRedac(Date dateRedac) {
+		this.dateRedac = dateRedac;
 	}
 
 
 	@Override
 	public String toString() {
 		return "RapportVisite [Visiteur=" + Visiteur + ", numRapport=" + numRapport + ", lePraticien=" + lePraticien
-				+ ", dateRapport=" + dateRapport + ", bilan=" + bilan + "]";
+				+ ", bilan=" + bilan + ", dateRapport=" + dateVisite + ", dateRedac=" + dateRedac + "]";
 	}
+
+
+	
 
 	
 	

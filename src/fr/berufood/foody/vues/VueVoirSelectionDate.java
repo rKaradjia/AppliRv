@@ -17,19 +17,19 @@ import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
 import fr.berufood.foody.controleurs.ControleurSelectionDate;
 
 public class VueVoirSelectionDate extends JDialog   {
-
+	//VueFoody vueParente ;
 	VueVisiteur vueParente ;
-	
+	//VueFoody vuePr ;
 	ControleurSelectionDate controleur ;
-	private String moisString;
-	private String anneeString;
+	private String mois;
+	private String annee;
 	
 	
 	
-	String [] mois = {"...","01","02","03","04","05","06","07","08","09","10","11","12"};
-	private JComboBox combobox = new JComboBox(mois) ;
-	String []annee = {"...","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018"};
-	private JComboBox combobox_1 = new JComboBox(annee) ;
+	String [] month = {"...","01","02","03","04","05","06","07","08","09","10","11","12"};
+	private JComboBox combobox = new JComboBox(month) ;
+	String []year = {"...","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018"};
+	private JComboBox combobox_1 = new JComboBox(year) ;
 	private JButton bValider = new JButton("Valider") ;
 	private JButton bAnnuler = new JButton("Annuler") ;
 	
@@ -179,29 +179,29 @@ public class VueVoirSelectionDate extends JDialog   {
 
 
 
-	public String getMoisString() {
-		return moisString;
+	public String getMois() {
+		return mois;
 	}
 
 
 
 
-	public void setMoisString(String moisString) {
-		this.moisString = moisString;
+	public void setMois(String mois) {
+		this.mois = mois;
 	}
 
 
 
 
-	public String getAnneeString() {
-		return anneeString;
+	public String getAnnee() {
+		return annee;
 	}
 
 
 
 
-	public void setAnneeString(String anneeString) {
-		this.anneeString = anneeString;
+	public void setAnnee(String annee) {
+		this.annee = annee;
 	}
 
 

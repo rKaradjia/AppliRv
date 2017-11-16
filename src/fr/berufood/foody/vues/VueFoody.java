@@ -8,6 +8,7 @@ import javax.swing.JSeparator;
 
 import fr.berufood.foody.controleurs.ControleurFoody;
 import fr.berufood.foody.controleurs.ControleurPraticien;
+import fr.berufood.foody.controleurs.ControleurSelectionDate;
 import fr.berufood.foody.controleurs.ControleurVisiteur;
 import fr.berufood.foody.vues.*;
 
@@ -22,6 +23,7 @@ public class VueFoody extends JFrame {
 	private ControleurFoody controleur ;
 	private ControleurVisiteur controleurVisiteur;
 	private ControleurPraticien controleurPraticien;
+	
 	//private ControleurVisiteur controleurVisiteur;
 	
 	// Les menus
@@ -103,6 +105,7 @@ public class VueFoody extends JFrame {
 		this.controleur = new ControleurFoody(this) ;
 		this.controleurVisiteur = new ControleurVisiteur(this);
 		this.controleurPraticien = new ControleurPraticien(this);
+		
 	//	this.controleurVisiteur=new ControleurVisiteur(this);
 		
 		// Affiche la fenêtre

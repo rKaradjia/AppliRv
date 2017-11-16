@@ -278,12 +278,12 @@ public class ModeleFoody extends AbstractTableModel {
                 e.printStackTrace();
             }
        
-            String sql = "Select * from RAPPORT_VISITE where VIS_MATRICULE = ? and RAP_DATE like ?";
+            String sql = "Select RAP_NUM, PRA_NUM, RAP_BILAN,RAP_DATE,RAP_DATEREDAC from RAPPORT_VISITE where VIS_MATRICULE = ? and RAP_DATE like ?";
             PreparedStatement pst = (PreparedStatement) connexion.prepareStatement(sql);
        
             pst.setString(1,matricule);
-            Integer dateMois = Integer.parseInt(jtDateMois.getText());
-            Integer dateAnnee = Integer.parseInt(jtDateAnnee.getText());
+            Integer dateMois = Integer.parseInt(jtDateMois);
+            Integer dateAnnee = Integer.parseInt(jtDateAnnee);
             String dateEntiere = dateAnnee +"-"+ dateMois + "%";
             pst.setString(2, dateEntiere);
        
@@ -294,13 +294,18 @@ public class ModeleFoody extends AbstractTableModel {
            
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();   
+            e.printStackTrace(); 
+            
+        
+        
+           }
+		return lesRapportVisites;  
         }
 	
 	
 	
 	
-      public static ResultSet getLeRapport() {
+      public static void getLeRapport(String matricule) throws ConnexionException {
 		
 		Connection connexion = ConnexionBD.getConnexion();
 	    
@@ -308,7 +313,7 @@ public class ModeleFoody extends AbstractTableModel {
 	    try {
 	    Statement st =connexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,       
 	    ResultSet.CONCUR_READ_ONLY);
-	    //String req = "SELECT * FROM RAPPORT_VISITE where VIS_MATRICULE = '"+matricule+"' ";
+	    String req = "SELECT * FROM RAPPORT_VISITE where VIS_MATRICULE = '"+matricule+"' ";
 	    ResultSet rs = st.executeQuery(req);
 	    
 	  

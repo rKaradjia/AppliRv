@@ -19,10 +19,11 @@ public class ControleurSelectionDate implements ActionListener{
 	// VOTRE CODE :
 	// Déclarer et initialiser l'attribut modele
 	private ModeleFoody modele ;			
-	
+	//
 	private VueVoirSelectionDate vue;
 	
-	private VueFoody vue1 ;
+	
+	//private VueFoody vue1 ;
 	
 	
 	
@@ -31,7 +32,7 @@ public class ControleurSelectionDate implements ActionListener{
 	 */
 	public ControleurSelectionDate(VueVoirSelectionDate vue){
 		super() ;
-		System.out.println("ControleurAuthentification::ControleurAuthentification()") ;
+		System.out.println("VueVoirSelectionDate---->ControleurSelectionVisiteur") ;
 		
 		this.vue = vue ;
 		this.enregistrerEcouteur() ;
@@ -41,7 +42,7 @@ public class ControleurSelectionDate implements ActionListener{
 	 * 
 	 */
 	private void enregistrerEcouteur(){
-		System.out.println("ControleurAuthentification::enregistrerEcouteur()") ;
+		System.out.println("VueVoirSelectionDate---->ControleurSelectionVisiteur::enregistrerEcouteur()") ;
 		
 		// VOTRE CODE : 
 		// Enregistrer l'écouteur du bouton "Se connecter"
@@ -61,17 +62,18 @@ public class ControleurSelectionDate implements ActionListener{
 		
 		if(sourceEvenement==this.vue.getbAnnuler()){
 			
-			this.vue.initialiser();
+			this.vue.dispose();
 			
 		}
 		
 		if(sourceEvenement==this.vue.getbValider()){
 				String mois =this.vue.getCombobox().getSelectedItem().toString();
 				System.out.println(mois);
-				this.vue.setMoisString(mois);
+				this.vue.setMois(mois);
 				String annee = this.vue.getCombobox_1().getSelectedItem().toString();
 				System.out.println(annee);
-				this.vue.setAnneeString(annee);
+				this.vue.setAnnee(annee);
+				
 				/*String TfLogin = Login.getText();
 				String Pfmdp = Mdp.getText();*/
 				System.out.println(mois);
