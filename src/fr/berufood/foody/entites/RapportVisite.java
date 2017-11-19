@@ -28,8 +28,9 @@ public class RapportVisite {
 	
 	private Visiteur 	Visiteur;
 	private int 		numRapport;
-	private Praticien 	lePraticien;	
-	private int numPraticien;
+	//private Praticien 	lePraticien;	
+	private String nomPraticien;
+	private String prenomPraticien;
 	private String 		bilan;
 	private Date 		dateVisite;
 	private Date 		dateRedac;
@@ -43,11 +44,12 @@ public class RapportVisite {
 	 * @param numPraticien 
 	 * @param numRapport2 
 	 */
-	public RapportVisite(int numRapport, int numPraticien, String bilan, Date dateVisite, Date dateRedac) {
+	public RapportVisite(int numRapport, String prenomPraticien,String nomPraticien, String bilan, Date dateVisite, Date dateRedac) {
 		
 		this.numRapport 	= numRapport;
-		this.lePraticien 	= lePraticien;
-		this.numPraticien=numPraticien;
+		//this.lePraticien 	= lePraticien;
+		this.prenomPraticien=prenomPraticien;
+		this.nomPraticien=nomPraticien;
 		this.dateVisite 	= dateVisite;
 		this.bilan 			= bilan;
 		this.dateRedac=dateRedac;
@@ -55,23 +57,23 @@ public class RapportVisite {
 	}
 
 	
-	public int getNumPraticien() {
-		return numPraticien;
+	public String getNomPraticien() {
+		return nomPraticien;
 	}
 
 
-	public void setNumPraticien(int numPraticien) {
-		this.numPraticien = numPraticien;
+	public void setNomPraticien(String nomPraticien) {
+		this.nomPraticien = nomPraticien;
 	}
 
 
 	public RapportVisite(Visiteur leVisiteur, int numRapport,
-			 int numPraticien, String bilan, Date dateVisite,Date dateRedac) {
+			 String nomPraticien, String bilan, Date dateVisite,Date dateRedac) {
 		
 		super();
 		this.Visiteur 	= Visiteur;
 		this.numRapport 	= numRapport;
-		this.numPraticien=numPraticien;
+		this.nomPraticien=nomPraticien;
 		//this.lePraticien 	= lePraticien;
 		this.dateVisite 	= dateVisite;
 		this.bilan 			= bilan;
@@ -144,9 +146,23 @@ public class RapportVisite {
 
 	@Override
 	public String toString() {
-		return "RapportVisite [Visiteur=" + Visiteur + ", numRapport=" + numRapport + ", lePraticien=" + lePraticien
-				+ ", bilan=" + bilan + ", dateRapport=" + dateVisite + ", dateRedac=" + dateRedac + "]";
+		return "RapportVisite [Visiteur=" + Visiteur + ", numRapport=" + numRapport + ", nomPraticien=" + nomPraticien
+				+ ", prenomPraticien=" + prenomPraticien + ", bilan=" + bilan + ", dateVisite=" + dateVisite
+				+ ", dateRedac=" + dateRedac + "]";
 	}
+
+
+	public String getPrenomPraticien() {
+		return prenomPraticien;
+	}
+
+
+	public void setPrenomPraticien(String prenomPraticien) {
+		this.prenomPraticien = prenomPraticien;
+	}
+
+
+	
 
 
 	

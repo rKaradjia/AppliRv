@@ -47,7 +47,7 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	| RAP_DATEREDAC | date         | YES  |     | NULL    |       |
 	+---------------+--------------+------+-----+---------+-------+*/
 
-	private final String[] entetes = { "Numero du rapport" , "Nom du praticien" , "Bilan","Date de la visite","Date de la redaction"} ;
+	private final String[] entetes = { "Numero du rapport" , "Nom du praticien" ,"Prenom du praticien", "Bilan","Date de la visite","Date de la redaction" ,"Lire"} ;
 
 	/*public ModeleListeLivreurs() {
 		super();
@@ -79,15 +79,17 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 		switch (columnIndex){
 		case 0: return Integer.class;
 				
-		case 1:return Integer.class;
+		case 1:return String.class;
 		              
-				
-		case 2:return String.class;
+		case 2:return String.class;	
 		
-		case 3:return Date.class;
+		case 3:return String.class;
 		
 		case 4:return Date.class;
 		
+		case 5:return Date.class;
+		
+		case 6:return String.class;
 				
 		
 		
@@ -109,20 +111,23 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 				
 				
 			case 1:
-				return lesRapports.get(rowIndex).getNumPraticien();
+				return lesRapports.get(rowIndex).getNomPraticien();
+					
+			case 2:
+				return lesRapports.get(rowIndex).getPrenomPraticien();
+					
 					
 				
-				
-			case 2:
+			case 3:
 				return lesRapports.get(rowIndex).getBilan();
 				
-			case 3:
+			case 4:
 				return lesRapports.get(rowIndex).getDateVisite();
 				
-			case 4:
+			case 5:
 				return lesRapports.get(rowIndex).getDateRedac();	
 			
-							
+			case 6:return "Lire";				
 			
 		}	
 		return null;

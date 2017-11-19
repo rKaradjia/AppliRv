@@ -10,8 +10,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
+import fr.berufood.foody.editeur.EditeurBoutonSelectionVisiteur;
 import fr.berufood.foody.modeles.ModelePraticienNoto;
 import fr.berufood.foody.modeles.ModeleRapportDateVisiteur;
+import fr.berufood.foody.rendus.RenduBoutonSelectionVisiteur;
 
 public class VueRapportParDate extends JFrame {
 	private String mois;
@@ -51,7 +53,8 @@ public class VueRapportParDate extends JFrame {
 		this.tabRapport.setRowHeight(30);//hauteur de chaques lignes
 		JScrollPane spLivreurs= new JScrollPane(this.tabRapport);
 		spLivreurs.setPreferredSize(new Dimension(1090,420));// y integre un srool d'une dimension de 1090*420
-		//tabPraticienNoto.getColumn("").setCellRenderer(new RendusBoutonVoirVisiteur());
+		tabRapport.getColumn("Lire").setCellRenderer(new RenduBoutonSelectionVisiteur());
+		tabRapport.getColumn("Lire").setCellEditor(new EditeurBoutonSelectionVisiteur());
 		
 		
 		boxTable.add(spLivreurs);
