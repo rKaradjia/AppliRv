@@ -17,13 +17,10 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 	private int row ;
 	private int column ;
 	private JTable table ;
-	
+	private ModeleRapportDateVisiteur modeleTab;
 	private String matricule;
 	
 	private VueFoody vuepr;
-	private VueVisiteur vue ;
-	private VueVoirSelectionDate vueVoirSelectionDate;
-	private ModeleFoody modele;
 	ArrayList<Visiteur> lesVisiteurs = new ArrayList<Visiteur>(ModeleFoody.getVisiteur());
 	/*public ControleurBoutonSelectionVisiteur() {
 		super();
@@ -75,7 +72,7 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 	
 	public String getMatricule(){
 	System.out.println("recuperation du matricule pour affichage dans le tableau des rapports");
-		return matricule;
+		return this.matricule;
 	}
 	
 	public void setMatricule(String matricule) {
@@ -84,19 +81,19 @@ public class ControleurBoutonSelectionVisiteur implements ActionListener {
 	
 	public void getVueSelectionDate(){
 		
-		VueVoirSelectionDate vueSelectDate = new VueVoirSelectionDate(vuepr);
+		VueVoirSelectionDate vueSelectDate = new VueVoirSelectionDate(vuepr,this.getMatriculeList());
 		vueSelectDate.setVisible(true);
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//System.out.println("ControleurBoutonVisiteurs::actionPerformed()");
+		System.out.println("ControleurBoutonVisiteurs::actionPerformed()");
 	    System.out.println("Recuperation de la ligne dans le tableau Visiteur "+this.getRow());//ok 9
 	    String test = this.getMatriculeList();
 	    System.out.println("Matricule dans la liste"+ test);
-	    this.setMatricule(test);
-	    System.out.println("Verification de l'insertion du matricule : "+this.getMatricule());
+	  /*  this.setMatricule(test);
+	    System.out.println("Verification de l'insertion du matricule : "+this.getMatricule());*/
 	   // System.out.println(((ModeleVisiteur) this.table.getModel()).getValueAt(0,this.getRow()));//ok 9
 	    
 	   

@@ -79,17 +79,19 @@ public class ControleurSelectionDate implements ActionListener{
 				String Pfmdp = Mdp.getText();*/
 				System.out.println(mois);
 				System.out.println(annee);
-				
+				System.out.println(this.vue.getMatricule());
 				//this.modele.seConnecter(TfLogin,Pfmdp);
 				
 				
 				vue.dispose();
 				
-				VueRapportParDate vuerapport=new VueRapportParDate();
+				VueRapportParDate vuerapport=new VueRapportParDate(mois,annee,this.vue.getMatricule());
+				vuerapport.setVisible(true);
+				vuerapport.setSize(1400,900);
 				
 				
 		
-	    }
+	     }
 	}
 
 	public void reinitialiser(){

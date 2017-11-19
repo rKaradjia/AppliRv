@@ -32,8 +32,9 @@ public class VueVoirSelectionDate extends JDialog   {
 	private JComboBox combobox_1 = new JComboBox(year) ;
 	private JButton bValider = new JButton("Valider") ;
 	private JButton bAnnuler = new JButton("Annuler") ;
+	private String matricule;
 	
-	public VueVoirSelectionDate(VueFoody vueParente){
+	public VueVoirSelectionDate(VueFoody vueParente,String matricule){
 		// Appel du constructeur de la super-classe
 		//	Troisième argument : true pour indiquer que la boîte de dialogue est modale 
 		super(vueParente,"selection de la date",true) ;
@@ -41,6 +42,9 @@ public class VueVoirSelectionDate extends JDialog   {
 		// Mémorise la vue parente qui est la fenêtre principale de l'application
 		this.vueParente = vueParente ;
 		
+		// Transmission du matricule recupere precedemment
+		this.matricule = matricule ;
+		System.out.println("VueVoirSelectionDate RecupMatricule "+this.getMatricule());
 		// Crée le formulaire de saisie
 		this.creerInterfaceUtilisateur() ;
 		
@@ -94,6 +98,9 @@ public class VueVoirSelectionDate extends JDialog   {
 		Box boxLigne = Box.createHorizontalBox() ;
 		Box boxActions = Box.createHorizontalBox() ;
 		
+		
+		boxEtiquettes.add(new JLabel()) ;
+		boxEtiquettes.add( Box.createVerticalStrut(10) ) ;
 		boxEtiquettes.add(new JLabel("Login : ")) ;
 		boxEtiquettes.add( Box.createVerticalStrut(10) ) ;
 		boxEtiquettes.add(new JLabel("MDP : ")) ;
@@ -148,40 +155,9 @@ public class VueVoirSelectionDate extends JDialog   {
 		
 	}
 
-	public String getmois() {
-		Object combo = combobox.getSelectedItem();
-		String mois = combo.toString();
-		System.out.println(mois);
-		return mois;
-	}
-
-	public String getannee() {
-		Object combo = combobox_1.getSelectedItem();
-		String annee = combo.toString();
-		System.out.println(annee);
-		return annee;
-	}
-
-	public JComboBox getCombobox() {
-		return combobox;
-	}
-
-
-
-	public JComboBox getCombobox_1() {
-		return combobox_1;
-	}
-
-
-
-
-
-
-
-
 	public String getMois() {
 		System.out.println("Recuperation du mois pour les Rv");
-		return mois;
+		return this.mois;
 	}
 
 
@@ -197,7 +173,7 @@ public class VueVoirSelectionDate extends JDialog   {
 	public String getAnnee() {
 		System.out.println("Recuperation de l'année pour les Rv");
 		
-		return annee;
+		return this.annee;
 	}
 
 
@@ -216,6 +192,71 @@ public class VueVoirSelectionDate extends JDialog   {
 
 	public JButton getbAnnuler() {
 		return bAnnuler;
+	}
+
+
+
+
+	public String getMatricule() {
+		return matricule;
+	}
+
+
+
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*	public String getcombomonth() {
+		Object combo = combobox.getSelectedItem();
+		String mois = combo.toString();
+		System.out.println(mois);
+		return mois;
+	}
+
+	public String getcomboyear() {
+		Object combo = combobox_1.getSelectedItem();
+		String annee = combo.toString();
+		System.out.println(annee);
+		return annee;
+	}
+*/
+	public JComboBox getCombobox() {
+		return combobox;
+	}
+
+
+
+	public JComboBox getCombobox_1() {
+		return combobox_1;
 	}
 
 }

@@ -52,16 +52,11 @@ private void creerInterfaceVisiteurs(){
 		boxTable.add(spLivreurs);
 		boxPrincipale.add(boxTable);
 		
-	   
-		
-		
 		boxPrincipale.add( boxEtiquette ) ;
 		boxPrincipale.add( boxTable ) ;
 		
 		this.add( boxPrincipale ) ;
 	}
-	
-	
 	
 	
 	

@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
+import fr.berufood.foody.controleurs.*;
 import fr.berufood.foody.entites.RapportVisite;
-import fr.berufood.foody.vues.VueVoirSelectionDate;
+import fr.berufood.foody.vues.*;
 
 
 
@@ -15,18 +15,22 @@ import fr.berufood.foody.vues.VueVoirSelectionDate;
 public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	
 	private ControleurBoutonSelectionVisiteur controleur;
-	private VueVoirSelectionDate vue;
-	private String matricule = controleur.getMatricule();
-	private String mois = vue.getMois();
-	private String annee = vue.getAnnee();
-	private List<RapportVisite> lesRapports = ModeleFoody.getRapportVisite(matricule,mois,annee) ;
+	//private VueVoirSelectionDate vue;
+	private VueRapportParDate vue;
+	//private String matricule= this.getControleur().getMatricule(); ==> mise en commentaire par AKA
+	private String mois/* = this.getVue().getMois()*/;
+	private String annee/*= this.getVue().getAnnee()*/;
+	private String matricule/*= this.getVue().getMatricule()*/;
+	private List<RapportVisite> lesRapports ;
 			
-			//ModeleFoody.getRapportVisite("a93","10","2017") ; TEST
 	
-	//ModeleFoody.getRapportVisite(this.controleur.getMatricule(),this.vue.getMois(),this.vue.getAnnee()) ;
-						//FINALE
-	
-	
+	public ModeleRapportDateVisiteur(String matricule, String mois, String annee) {
+		this.matricule=matricule;
+		this.annee=annee;
+		this.mois=mois;
+		System.out.println("ModeleRapportDateVisite" + "" +this.getMatricule() + " " + this.getMois() + " "+this.getAnnee());
+		lesRapports = ModeleFoody.getRapportVisite(this.getMatricule(),this.getMois(),this.annee);
+	}
 	
 	/*Note localisation des informations suivantes Matricule : ControleurBoutonSelectionVisiteur variable matricule 
 	 * 											    Mois et annee : VueVoirSelectionDate 
@@ -48,6 +52,8 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	/*public ModeleListeLivreurs() {
 		super();
 	}*/
+
+	
 
 	@Override
 	public int getRowCount() {
@@ -116,8 +122,7 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 			case 4:
 				return lesRapports.get(rowIndex).getDateRedac();	
 			
-					
-					
+							
 			
 		}	
 		return null;
@@ -126,5 +131,74 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	public void actualiser(){
 		this.fireTableDataChanged();
 	}
+	public ControleurBoutonSelectionVisiteur getControleur() {
+		System.out.println("Recuperation du controleur selectionVisiteur oour les rapports"+ this.getControleur().getMatricule());
+		return controleur;
+	}
 
+	public VueRapportParDate getVue() {
+		//System.out.println("Recuperation de la date saisie par utilisateur" + this.getVue().getAnnee());
+		return vue;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public String getMois() {
+		return mois;
+	}
+
+	public void setMois(String mois) {
+		this.mois = mois;
+	}
+
+	public String getAnnee() {
+		return annee;
+	}
+
+	public void setAnnee(String annee) {
+		this.annee = annee;
+	}
+
+	public String getMatricule() {
+		return matricule;
+	}
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -259,7 +259,8 @@ public class ModeleFoody extends AbstractTableModel {
 
 	public static List<RapportVisite> getRapportVisite(String matricule, String jtDateMois,String jtDateAnnee){
 		System.out.println(matricule +"Dans modele");
-		
+		System.out.println(jtDateMois +"Dans modele");
+		System.out.println(jtDateAnnee +"Dans modele");
         List<RapportVisite> lesRapportVisites = new ArrayList<RapportVisite>() ;
         ResultSet resultat = null;
         Connection connexion = null;

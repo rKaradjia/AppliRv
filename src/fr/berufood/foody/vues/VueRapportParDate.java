@@ -14,7 +14,9 @@ import fr.berufood.foody.modeles.ModelePraticienNoto;
 import fr.berufood.foody.modeles.ModeleRapportDateVisiteur;
 
 public class VueRapportParDate extends JFrame {
-	
+	private String mois;
+	private String annee;
+	private String matricule;
 	
 	private ControleurBoutonSelectionVisiteur controleurParent;
 	private VueVoirSelectionDate vueParente;
@@ -23,19 +25,25 @@ public class VueRapportParDate extends JFrame {
 	
 	//private RenduCelluleRestaurant renduCellRestaurants;
 	
-	public VueRapportParDate(){
+	public VueRapportParDate(String mois,String annee,String matricule){
 		super() ;
-		modele = new ModeleRapportDateVisiteur() ;
+		this.matricule=matricule;
+		this.mois=mois;
+		this.annee=annee;
+		System.out.println("Verification de la recuperation des informations"
+				+ " VueRapportParDate" + this.getMatricule() +" "+ this.getMois() + " " +this.getAnnee());
+		modele = new ModeleRapportDateVisiteur(this.getMatricule(),this.getMois(),this.getAnnee()) ;
 		this.creerInterfaceVisiteurs() ;
 	}
-		// VOTRE CODE ICI - Question 10
+		
+	// VOTRE CODE ICI - Question 10
     private void creerInterfaceVisiteurs(){
 		
 		Box boxPrincipale = Box.createVerticalBox() ;
 		Box boxEtiquette = Box.createHorizontalBox() ;
 		Box boxTable = Box.createHorizontalBox() ;
 		
-		boxEtiquette.add( new JLabel( "Coeficient de notoriete" ) ) ;
+		boxEtiquette.add( new JLabel( "Liste des rapports du visiteur pour la date donnée" ) ) ;
 		
 		// VOTRE CODE ICI - Question 6
 		
@@ -70,6 +78,26 @@ public class VueRapportParDate extends JFrame {
 		return tabRapport;
 	}
 	
+	
+	
+	public String getMois() {
+		return mois;
+	}
+	public void setMois(String mois) {
+		this.mois = mois;
+	}
+	public String getAnnee() {
+		return annee;
+	}
+	public void setAnnee(String annee) {
+		this.annee = annee;
+	}
+	public String getMatricule() {
+		return matricule;
+	}
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
+	}
 	// VOTRE CODE ICI - Question 10
 
 }
