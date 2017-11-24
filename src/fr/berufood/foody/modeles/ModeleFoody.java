@@ -321,7 +321,7 @@ public class ModeleFoody extends AbstractTableModel {
                 e.printStackTrace();
             }
        
-            String sql = "Select RAP_NUM, PRA_NOM, PRA_PRENOM,RAP_BILAN,RAP_DATE,RAP_DATEREDAC from RAPPORT_VISITE "
+            String sql = "Select RAP_NUM, PRA_NOM, PRA_PRENOM,RAP_DATE,RAP_DATEREDAC from RAPPORT_VISITE "
             		+ "inner join PRATICIEN ON RAPPORT_VISITE.PRA_NUM=PRATICIEN.PRA_NUM where VIS_MATRICULE = ? and RAP_DATE like ?";
             PreparedStatement pst = (PreparedStatement) connexion.prepareStatement(sql);
        
@@ -340,7 +340,7 @@ public class ModeleFoody extends AbstractTableModel {
             	int numRapport = resultat.getInt("RAP_NUM");
 				String nomPraticien = resultat.getString("PRA_NOM");
 				String prenomPraticien = resultat.getString("PRA_PRENOM");
-				String bilan =resultat.getString("RAP_BILAN");
+				
 				Date dateVisite = resultat.getDate("RAP_DATE");
 				Date dateRedac = resultat.getDate("RAP_DATEREDAC");
 				System.out.println("boucle while");
@@ -358,7 +358,7 @@ public class ModeleFoody extends AbstractTableModel {
 	private Date 		dateRedac;*/	
 				
 			    
-			     lesRapportVisites.add(new RapportVisite(numRapport,nomPraticien, prenomPraticien,bilan,dateVisite,dateRedac));
+			     lesRapportVisites.add(new RapportVisite(numRapport,nomPraticien, prenomPraticien,dateVisite,dateRedac));
 				
 				//	return visiteurs;
 				

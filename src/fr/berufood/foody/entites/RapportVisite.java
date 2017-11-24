@@ -36,22 +36,15 @@ public class RapportVisite {
 	private int 		rapportConf;
 	//private boolean 	lecture;
 	
-	/**
-	 * Constructeur sans paramètre
-	 * @param dateRedac2 
-	 * @param dateVisite2 
-	 * @param bilan2 
-	 * @param numPraticien 
-	 * @param numRapport2 
-	 */
-	public RapportVisite(int numRapport, String prenomPraticien,String nomPraticien, String bilan, Date dateVisite, Date dateRedac) {
+	
+	public RapportVisite(int numRapport, String prenomPraticien,String nomPraticien, Date dateVisite, Date dateRedac) {
 		
 		this.numRapport 	= numRapport;
 		//this.lePraticien 	= lePraticien;
 		this.prenomPraticien=prenomPraticien;
 		this.nomPraticien=nomPraticien;
 		this.dateVisite 	= dateVisite;
-		this.bilan 			= bilan;
+	
 		this.dateRedac=dateRedac;
 		
 	}

@@ -34,7 +34,7 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	
 	
 
-	private final String[] entetes = { "Numero du rapport" , "Nom du praticien" ,"Prenom du praticien", "Bilan","Date de la visite","Date de la redaction" ,"Lire"} ;
+	private final String[] entetes = { "Numero du rapport" , "Nom du praticien" ,"Prenom du praticien","Date de la visite","Date de la redaction" ,"Lire"} ;
 
 
 	@Override
@@ -65,13 +65,11 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 		              
 		case 2:return String.class;	
 		
-		case 3:return String.class;
+		case 3:return Date.class;
 		
 		case 4:return Date.class;
 		
-		case 5:return Date.class;
-		
-		case 6:return String.class;
+		case 5:return String.class;
 				
 		
 		
@@ -100,16 +98,15 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 					
 					
 				
-			case 3:
-				return lesRapports.get(rowIndex).getBilan();
+			
 				
-			case 4:
+			case 3:
 				return lesRapports.get(rowIndex).getDateVisite();
 				
-			case 5:
+			case 4:
 				return lesRapports.get(rowIndex).getDateRedac();	
 			
-			case 6:return "Lire";				
+			case 5:return "Lire";				
 			
 		}	
 		return null;
@@ -118,7 +115,7 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		
-		if(columnIndex == 6){
+		if(columnIndex == 5){
 			
 			return true ;
 		}
