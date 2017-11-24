@@ -33,7 +33,7 @@ public class ControleurPraticien implements ActionListener {
 		// Se met à l'écoute de l'item de menu "Se connecter"
 		
 		// Se met à l'écoute de l'item de menu "A propos..."
-		this.vue.getItemSelectPraticienCoef().addActionListener(this) ;
+		this.vue.getItemSelectPraticienConf().addActionListener(this) ;
 		this.vue.getItemSelectPraticienNotoriete().addActionListener(this);
 		this.vue.getItemSelectPraticienVisite().addActionListener(this);
 		
@@ -45,7 +45,9 @@ public class ControleurPraticien implements ActionListener {
 		// Obtient le composant graphique source de l'événement ("clic")
 		Object sourceEvenement = e.getSource() ;
 		
-		if( sourceEvenement == this.vue.getItemSelectPraticienCoef() ){
+		
+		
+		if( sourceEvenement == this.vue.getItemSelectPraticienConf() ){
 			this.afficherPraticienConf();
 		}
 		if( sourceEvenement == this.vue.getItemSelectPraticienNotoriete() ){

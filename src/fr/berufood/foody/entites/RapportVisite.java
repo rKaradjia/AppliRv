@@ -28,12 +28,12 @@ public class RapportVisite {
 	
 	private Visiteur 	Visiteur;
 	private int 		numRapport;
-	//private Praticien 	lePraticien;	
-	private String nomPraticien;
-	private String prenomPraticien;
+	private String 		nomPraticien;
+	private String 		prenomPraticien;
 	private String 		bilan;
 	private Date 		dateVisite;
 	private Date 		dateRedac;
+	private int 		rapportConf;
 	//private boolean 	lecture;
 	
 	/**
@@ -55,8 +55,29 @@ public class RapportVisite {
 		this.dateRedac=dateRedac;
 		
 	}
+	
+	
+	public RapportVisite(int numRapport, String prenomPraticien, String nomPraticien, String bilan, Date dateVisite, Date dateRedac, int rapportConf) {
+		
+		this.numRapport 	= numRapport;
+		//this.lePraticien 	= lePraticien;
+		this.prenomPraticien=prenomPraticien;
+		this.nomPraticien=nomPraticien;
+		this.dateVisite 	= dateVisite;
+		this.bilan 			= bilan;
+		this.dateRedac=dateRedac;
+		this.rapportConf = rapportConf;
+		
+		
+	}
 
 	
+	public RapportVisite(String bilan) {
+		// TODO Auto-generated constructor stub
+		this.bilan = bilan;
+	}
+
+
 	public String getNomPraticien() {
 		return nomPraticien;
 	}
@@ -67,7 +88,7 @@ public class RapportVisite {
 	}
 
 
-	public RapportVisite(Visiteur leVisiteur, int numRapport,
+	/*public RapportVisite(Visiteur leVisiteur, int numRapport,
 			 String nomPraticien, String bilan, Date dateVisite,Date dateRedac) {
 		
 		super();
@@ -79,8 +100,18 @@ public class RapportVisite {
 		this.bilan 			= bilan;
 		this.dateRedac=dateRedac;
 		
-	}
+	}*/
 
+	
+	public int getRapportConf() {
+		return rapportConf;
+		
+	}
+	
+	public void setRapportConf() {
+		this.rapportConf = rapportConf;
+		
+	}
 	
 	
 

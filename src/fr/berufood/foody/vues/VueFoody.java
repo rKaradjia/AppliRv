@@ -42,7 +42,7 @@ public class VueFoody extends JFrame {
 	private JMenuItem itemLire = new JMenuItem("Lire") ;
 	private JMenuItem itemModifier = new JMenuItem("Modifier") ;
 	
-	private JMenuItem itemSelectPraticienCoef = new JMenuItem("Coef. Confiance");
+	private JMenuItem itemSelectPraticienConf = new JMenuItem("Coef. Confiance");
 	private JMenuItem itemSelectPraticienNotoriete = new JMenuItem("Notoriete");
 	private JMenuItem itemDerniereVisite = new JMenuItem("Derniere visite");
 
@@ -56,6 +56,7 @@ public class VueFoody extends JFrame {
 	private VuePraticienNoto vuePraticienNoto = new VuePraticienNoto();
 	private VuePraticienVisite vuePraticienVisite = new VuePraticienVisite();
 	private VueAccueil vueAccueil = new VueAccueil();
+	private VuePraticienConf vuePraticienConf = new VuePraticienConf();
 	//private VueRapportParDate vueRapportParDate = new VueRapportParDate();
 	
 	
@@ -97,6 +98,7 @@ public class VueFoody extends JFrame {
 		conteneur.add(vueAccueil,"Accueil");
 		conteneur.add(vueVisiteur,"vueVisiteur");
 		conteneur.add(vuePraticienNoto, "vuePraticienNoto");
+		conteneur.add(vuePraticienConf, "vuePraticienConf");
 		//conteneur.add(vueRapportParDate, "vueRapportParDate");
 		this.clVues.show(conteneur,"Accueil") ;
 		
@@ -126,7 +128,7 @@ public class VueFoody extends JFrame {
 		this.menuRapport.add(this.itemLire) ;
 		this.menuRapport.add(this.itemModifier) ;
 		
-		this.menuPraticiens.add(itemSelectPraticienCoef );
+		this.menuPraticiens.add(itemSelectPraticienConf );
 		this.menuPraticiens.add(itemSelectPraticienNotoriete);
 		this.menuPraticiens.add(itemDerniereVisite);
 		
@@ -210,8 +212,8 @@ public void setBarreMenusModeDeconnecte(){
 	
 	
 	
-	public JMenuItem getItemSelectPraticienCoef() {
-		return itemSelectPraticienCoef;
+	public JMenuItem getItemSelectPraticienConf() {
+		return itemSelectPraticienConf;
 	}
 	
 	public JMenuItem getItemSelectPraticienNotoriete() {

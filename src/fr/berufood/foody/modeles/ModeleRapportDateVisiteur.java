@@ -17,10 +17,10 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	private ControleurBoutonSelectionVisiteur controleur;
 	//private VueVoirSelectionDate vue;
 	private VueRapportParDate vue;
-	//private String matricule= this.getControleur().getMatricule(); ==> mise en commentaire par AKA
-	private String mois/* = this.getVue().getMois()*/;
-	private String annee/*= this.getVue().getAnnee()*/;
-	private String matricule/*= this.getVue().getMatricule()*/;
+	
+	private String mois;
+	private String annee;
+	private String matricule;
 	private List<RapportVisite> lesRapports ;
 			
 	
@@ -29,53 +29,35 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 		this.annee=annee;
 		this.mois=mois;
 		System.out.println("ModeleRapportDateVisite" + "" +this.getMatricule() + " " + this.getMois() + " "+this.getAnnee());
-		lesRapports = ModeleFoody.getRapportVisite(this.getMatricule(),this.getMois(),this.annee);
+		lesRapports = ModeleFoody.getRapportsVisite(this.getMatricule(),this.getMois(),this.annee);
 	}
 	
-	/*Note localisation des informations suivantes Matricule : ControleurBoutonSelectionVisiteur variable matricule 
-	 * 											    Mois et annee : VueVoirSelectionDate 
-	 */
 	
-	/*+---------------+--------------+------+-----+---------+-------+
-	| Field         | Type         | Null | Key | Default | Extra |
-	+---------------+--------------+------+-----+---------+-------+
-	| VIS_MATRICULE | varchar(20)  | NO   | PRI |         |       |
-	| RAP_NUM       | int(11)      | NO   | PRI | 0       |       |
-	| PRA_NUM       | int(11)      | YES  | MUL | NULL    |       |
-	| RAP_BILAN     | varchar(510) | YES  |     |         |       |
-	| RAP_DATE      | date         | YES  |     | NULL    |       |
-	| RAP_DATEREDAC | date         | YES  |     | NULL    |       |
-	+---------------+--------------+------+-----+---------+-------+*/
 
 	private final String[] entetes = { "Numero du rapport" , "Nom du praticien" ,"Prenom du praticien", "Bilan","Date de la visite","Date de la redaction" ,"Lire"} ;
 
-	/*public ModeleListeLivreurs() {
-		super();
-	}*/
-
-	
 
 	@Override
 	public int getRowCount() {
-		// VOTRE CODE ICI - Question 5
+		
 		return lesRapports.size();
 	}
 
 	@Override
 	public int getColumnCount() {
-		// VOTRE CODE ICI - Question 5
+		
 		return entetes.length;
 	}
 	
 	@Override
 	public String getColumnName(int column) {
-		// VOTRE CODE ICI - Question 5
+		
 		return entetes[column];
 	}
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		// VOTRE CODE ICI - Question 5
+		
 		switch (columnIndex){
 		case 0: return Integer.class;
 				
@@ -100,7 +82,7 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// VOTRE CODE ICI - Question 5
+		
 		switch (columnIndex){
 			
 			case 0:
@@ -133,6 +115,21 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 		return null;
 	}
 	
+	
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		
+		if(columnIndex == 6){
+			
+			return true ;
+		}
+		else{
+			
+			return false;
+		}
+		
+	}
+	
+	
 	public void actualiser(){
 		this.fireTableDataChanged();
 	}
@@ -142,7 +139,7 @@ public class ModeleRapportDateVisiteur extends AbstractTableModel {
 	}
 
 	public VueRapportParDate getVue() {
-		//System.out.println("Recuperation de la date saisie par utilisateur" + this.getVue().getAnnee());
+		
 		return vue;
 	}
 

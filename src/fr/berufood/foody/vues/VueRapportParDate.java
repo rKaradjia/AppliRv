@@ -10,18 +10,26 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
+import fr.berufood.foody.controleurs.ControleurFoody;
+import fr.berufood.foody.controleurs.ControleurLireRapport;
+import fr.berufood.foody.controleurs.ControleurPraticien;
+import fr.berufood.foody.editeur.EditeurBoutonSelectionRapport;
 import fr.berufood.foody.editeur.EditeurBoutonSelectionVisiteur;
 import fr.berufood.foody.modeles.ModelePraticienNoto;
 import fr.berufood.foody.modeles.ModeleRapportDateVisiteur;
+import fr.berufood.foody.rendus.RenduBoutonSelectionRapport;
 import fr.berufood.foody.rendus.RenduBoutonSelectionVisiteur;
 
 public class VueRapportParDate extends JFrame {
 	private String mois;
 	private String annee;
 	private String matricule;
+	private ControleurLireRapport controleur;
 	
-	private ControleurBoutonSelectionVisiteur controleurParent;
+	
+	//private ControleurBoutonSelectionVisiteur controleurParent;
 	private VueVoirSelectionDate vueParente;
+	private ControleurLireRapport vueLire;
 	private ModeleRapportDateVisiteur modele ;
 	private JTable tabRapport;
 	
@@ -35,6 +43,7 @@ public class VueRapportParDate extends JFrame {
 		System.out.println("Verification de la recuperation des informations"
 				+ " VueRapportParDate" + this.getMatricule() +" "+ this.getMois() + " " +this.getAnnee());
 		modele = new ModeleRapportDateVisiteur(this.getMatricule(),this.getMois(),this.getAnnee()) ;
+		vueLire=new ControleurLireRapport(this.getMatricule(),this.getMois(),this.getAnnee());
 		this.creerInterfaceVisiteurs() ;
 	}
 		
@@ -53,8 +62,9 @@ public class VueRapportParDate extends JFrame {
 		this.tabRapport.setRowHeight(30);//hauteur de chaques lignes
 		JScrollPane spLivreurs= new JScrollPane(this.tabRapport);
 		spLivreurs.setPreferredSize(new Dimension(1090,420));// y integre un srool d'une dimension de 1090*420
-		tabRapport.getColumn("Lire").setCellRenderer(new RenduBoutonSelectionVisiteur());
-		tabRapport.getColumn("Lire").setCellEditor(new EditeurBoutonSelectionVisiteur());
+		
+		tabRapport.getColumn("Lire").setCellRenderer(new RenduBoutonSelectionRapport());
+		tabRapport.getColumn("Lire").setCellEditor(new EditeurBoutonSelectionRapport(this.getMatricule(),this.getMois(),this.getAnnee()));
 		
 		
 		boxTable.add(spLivreurs);

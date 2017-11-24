@@ -15,6 +15,9 @@ public class Praticien {
 	private float coefnoto;
 	private String code;
 	private Date derniereVisite;
+	private Date dateVisite;
+	private int rapportConf;
+	private String nomVisiteur;
 	
 	
     public Praticien(){
@@ -35,7 +38,16 @@ public class Praticien {
 		this.derniereVisite=derniereVisite;
 	}
 
-	
+	public Praticien(String nomVisiteur,String nom ,String prenom, Date dateVisite, int rapportConf) {
+		super();
+		this.nomVisiteur=nomVisiteur;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateVisite = dateVisite; 
+		this.rapportConf = rapportConf;
+		
+		
+	}
 	
 
 
@@ -45,6 +57,16 @@ public class Praticien {
 		this.prenom = prenom;
 		this.derniereVisite=derniereVisite;
 	}
+	
+	public String getNomVisiteur(){
+		return nomVisiteur;
+	}
+	
+	public void setNomVisiteur(String nomVisiteur){
+		this.nomVisiteur = nomVisiteur;
+	}
+	
+	
 	
 	public int getNum() {
 		return num;
@@ -189,16 +211,34 @@ public class Praticien {
 	/**
 	 * @return the derniereVisite
 	 */
-	public Date getDateVisite() {
+	public Date getDernDateVisite() {
 		return derniereVisite;
 	}
 
 	/**
 	 * @param derniereVisite the derniereVisite to set
 	 */
-	public void setDateVisite(Date derniereVisite) {
+	public void setDernDateVisite(Date derniereVisite) {
 		this.derniereVisite = derniereVisite;
 	}
+	
+	public Date getDateVisite() {
+		return dateVisite;
+	}
+	
+	public void setDateVisite(Date dateVisite) {
+		this.dateVisite = dateVisite;
+	}
+	
+	public int getRapportConf() {
+		return rapportConf;
+	}
+	
+	public void setRapportConf(int rapportConf) {
+		this.rapportConf= rapportConf;
+	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -207,7 +247,7 @@ public class Praticien {
 	}
 
 
-
+	
 
 
 

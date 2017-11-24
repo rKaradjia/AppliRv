@@ -163,6 +163,52 @@ public class ModeleFoody extends AbstractTableModel {
 				}
 		 return visiteurs;
 	}
+	
+	public static List<Praticien> getPraticienConf() {
+		List<Praticien> lesPraticiens = new ArrayList<Praticien>() ;
+		ResultSet resultat = null ;
+		Connection connexion = null;
+		PreparedStatement requetePreparee = null;
+		
+		try {
+			try {
+				connexion = ConnexionBD.getConnexion();
+			} catch (ConnexionException e) {
+				e.printStackTrace();
+			}
+			String sql ="select VISITEUR.VIS_NOM, PRA_NOM, PRA_PRENOM, RAPPORT_VISITE.RAP_DATE, RAPPORT_VISITE.RAP_CONF from PRATICIEN inner join RAPPORT_VISITE"
+					+ " on PRATICIEN.PRA_NUM = RAPPORT_VISITE.PRA_NUM"
+					+ " inner join VISITEUR on RAPPORT_VISITE.VIS_MATRICULE = VISITEUR.VIS_MATRICULE";
+			
+			requetePreparee = (PreparedStatement) connexion.prepareStatement(sql);
+			
+			resultat = requetePreparee.executeQuery();
+				
+			while(resultat.next()){//tant que il y a des rsats a afficher BOOLEAN
+				
+				String nomVisiteur = resultat.getString("VIS_NOM");
+			    String nomPraticien = resultat.getString("PRA_NOM");
+			    String prenomPraticien = resultat.getString("PRA_PRENOM");
+		       // visiteur.setDateEmbauche(resultat.getDateFr("VIS_DATEEMBAUCHE"));
+			    Date rapportDate = resultat.getDate("RAP_DATE");
+			    int rapportConf = resultat.getInt("RAP_CONF");
+			    
+			     lesPraticiens.add(new Praticien(nomVisiteur,nomPraticien,prenomPraticien,rapportDate,rapportConf));
+				
+				//	return visiteurs;
+			}
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				}
+			return lesPraticiens;		
+			
+		}
+
+	
+	
+	
+	
 
 	public static List<Praticien> getPraticienNoto() {
 		List<Praticien> lesPraticiens = new ArrayList<Praticien>() ;
@@ -257,7 +303,7 @@ public class ModeleFoody extends AbstractTableModel {
 		 return lesPraticiens;
 	}
 
-	public static List<RapportVisite> getRapportVisite(String matricule, String jtDateMois,String jtDateAnnee){
+	public static List<RapportVisite> getRapportsVisite(String matricule, String jtDateMois,String jtDateAnnee){
 		System.out.println(matricule +"Dans modele");
 		System.out.println(jtDateMois +"Dans modele");
 		System.out.println(jtDateAnnee +"Dans modele");
@@ -283,12 +329,22 @@ public class ModeleFoody extends AbstractTableModel {
             Integer dateMois = Integer.parseInt(jtDateMois);
             Integer dateAnnee = Integer.parseInt(jtDateAnnee);
             String dateEntiere = dateAnnee +"-"+ dateMois + "%";
+            System.out.println(dateEntiere);
             pst.setString(2, dateEntiere);
        
        
-           resultat= pst.executeQuery();
+            resultat= pst.executeQuery();
            
-            while(resultat.next()){//tant que il y a des rsats a afficher BOOLEAN
+            while(resultat.next()){
+            	
+            	int numRapport = resultat.getInt("RAP_NUM");
+				String nomPraticien = resultat.getString("PRA_NOM");
+				String prenomPraticien = resultat.getString("PRA_PRENOM");
+				String bilan =resultat.getString("RAP_BILAN");
+				Date dateVisite = resultat.getDate("RAP_DATE");
+				Date dateRedac = resultat.getDate("RAP_DATEREDAC");
+				System.out.println("boucle while");
+            	//tant que il y a des rsats a afficher BOOLEAN
         	/*private Visiteur 	Visiteur;          RAP_NUM       | int(11)      | NO   | PRI | 0       |       |
 | PRA_NUM       | int(11)      | YES  | MUL | NULL    |       |
 | RAP_BILAN     | varchar(510) | YES  |     |         |       |
@@ -300,13 +356,6 @@ public class ModeleFoody extends AbstractTableModel {
 	private String 		bilan;
 	private Date 		dateVisite;
 	private Date 		dateRedac;*/	
-				int numRapport = resultat.getInt("RAP_NUM");
-				String nomPraticien = resultat.getString("PRA_NOM");
-				String prenomPraticien = resultat.getString("PRA_PRENOM");
-				String bilan =resultat.getString("RAP_BILAN");
-				Date dateVisite = resultat.getDate("RAP_DATE");
-				Date dateRedac = resultat.getDate("RAP_DATEREDAC");
-				
 				
 			    
 			     lesRapportVisites.add(new RapportVisite(numRapport,nomPraticien, prenomPraticien,bilan,dateVisite,dateRedac));
@@ -327,29 +376,47 @@ public class ModeleFoody extends AbstractTableModel {
 	
 	
 	
-	
-      public static void getLeRapport(String matricule) throws ConnexionException {
-		
-		Connection connexion = ConnexionBD.getConnexion();
+    public static List<RapportVisite> getLeRapport(int numRapport) {
+ 		System.out.println("recuperation du modele numero"+ numRapport);
+         List<RapportVisite> unRapport = new ArrayList<RapportVisite>() ;
+         ResultSet resultat = null;
+         Connection connexion = null;
+         //Statement st = connexion.createStatement();
+         PreparedStatement requetePreparee = null;
+        
+         try {
+             try {
+                 connexion = ConnexionBD.getConnexion();
+             } catch (ConnexionException e) {
+                 // TODO Auto-generated catch block
+                 e.printStackTrace();
+             }
+        
+             Statement st =connexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,       
+						ResultSet.CONCUR_READ_ONLY);
+				String req = "SELECT RAP_BILAN FROM RAPPORT_VISITE where RAP_NUM = '"+numRapport+"' ";
+				ResultSet rs = st.executeQuery(req);
 	    
-		
-	    try {
-	    Statement st =connexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,       
-	    ResultSet.CONCUR_READ_ONLY);
-	    String req = "SELECT * FROM RAPPORT_VISITE where VIS_MATRICULE = '"+matricule+"' ";
-	    ResultSet rs = st.executeQuery(req);
-	    
-	  
-	        
-	   
-	    } 
-	    catch (Exception e ) {
-	      e.printStackTrace();
-	    }
-	  
-	
-	}
+				while(rs.next()){
+	    	   	
+					String bilan =rs.getString("RAP_BILAN");
+
+					unRapport.add(new RapportVisite(bilan));
+			
+				}
+ 				
+ 				
+ 			
+            
+         } catch (SQLException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();     
+            }
+ 		return unRapport;  
+         }
 }
+
+
 
 
 
