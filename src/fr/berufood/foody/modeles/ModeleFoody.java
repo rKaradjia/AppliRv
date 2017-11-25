@@ -328,11 +328,21 @@ public class ModeleFoody extends AbstractTableModel {
             pst.setString(1,matricule);
             Integer dateMois = Integer.parseInt(jtDateMois);
             Integer dateAnnee = Integer.parseInt(jtDateAnnee);
-            String dateEntiere = dateAnnee +"-"+ dateMois + "%";
-            System.out.println(dateEntiere);
-            pst.setString(2, dateEntiere);
+            
+            if(dateMois<10){
+            	 
+                String dateEntiere = dateAnnee +"-0"+ dateMois + "%";
+                System.out.println(dateEntiere);
+                
+                pst.setString(2, dateEntiere);
+            }
+            else{
+            
+            	String dateEntiere = dateAnnee +"-"+ dateMois + "%";
+            	System.out.println(dateEntiere);
+            	pst.setString(2, dateEntiere);
        
-       
+            }
             resultat= pst.executeQuery();
            
             while(resultat.next()){
@@ -379,11 +389,12 @@ public class ModeleFoody extends AbstractTableModel {
     public static List<RapportVisite> getLeRapport(int numRapport) {
  		System.out.println("recuperation du modele numero"+ numRapport);
          List<RapportVisite> unRapport = new ArrayList<RapportVisite>() ;
-         ResultSet resultat = null;
+        // ResultSet resultat = null;
+       //  ResultSet resultat2 = null;RAPPORT_VISITE RAP_VUE
          Connection connexion = null;
          //Statement st = connexion.createStatement();
-         PreparedStatement requetePreparee = null;
-        
+    //     PreparedStatement requetePreparee = null;
+    //     PreparedStatement requetePreparee2 = null;//RAPPORT_VISITE RAP_VUE   BOOLEAN
          try {
              try {
                  connexion = ConnexionBD.getConnexion();
@@ -404,9 +415,15 @@ public class ModeleFoody extends AbstractTableModel {
 					unRapport.add(new RapportVisite(bilan));
 			
 				}
- 				
- 				
- 			
+ 				//MISE A JOUR DE LA TABLE RAPPORT VISITE LE RAPPORT A ETE LU
+				 Statement st2 =connexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,       
+							ResultSet.CONCUR_READ_ONLY);
+				 //UPDATE table
+			//	 SET nom_colonne_1 = 'nouvelle valeur'
+				//		 WHERE condition
+				 String req2 = "UPDATE RAPPORT_VISITE SET RAP_VUE = 1 where RAP_NUM = '"+numRapport+"' ";
+					ResultSet rs2 = st.executeQuery(req);
+					System.out.println(rs2);
             
          } catch (SQLException e) {
              // TODO Auto-generated catch block
