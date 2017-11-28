@@ -11,6 +11,7 @@ import javax.swing.JTable;
 
 import fr.berufood.foody.controleurs.ControleurBoutonSelectionVisiteur;
 import fr.berufood.foody.editeur.EditeurBoutonSelectionVisiteur;
+import fr.berufood.foody.modeles.ModeleFoody;
 import fr.berufood.foody.modeles.ModeleLireRapport;
 import fr.berufood.foody.modeles.ModelePraticienNoto;
 import fr.berufood.foody.modeles.ModeleRapportDateVisiteur;
@@ -20,7 +21,7 @@ import fr.berufood.foody.techniques.ConnexionException;
 public class VueLireRapport extends JFrame {
 	private int numRapport;
 	
-	
+	private ModeleFoody modelePr;
 	private ModeleLireRapport modele ;
 	private JTable tabRapport;
 	
@@ -32,6 +33,8 @@ public class VueLireRapport extends JFrame {
 		System.out.println("Verification de la recuperation des informations"
 				+ " VueLireRapport" + this.getNumRapport());
 		modele = new ModeleLireRapport(this.getNumRapport());
+		//ModeleFoody modelePr;
+		//modelePr = new ModeleFoody().getModele().Lue(this.getNumRapport());
 		this.creerInterfaceVisiteurs() ;
 	}
 		

@@ -415,14 +415,14 @@ public class ModeleFoody extends AbstractTableModel {
 					unRapport.add(new RapportVisite(bilan));
 			
 				}
- 				//MISE A JOUR DE LA TABLE RAPPORT VISITE LE RAPPORT A ETE LU
-				 Statement st2 =connexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,       
-							ResultSet.CONCUR_READ_ONLY);
-				 //UPDATE table
-			//	 SET nom_colonne_1 = 'nouvelle valeur'
-				//		 WHERE condition
+ 				
 				 String req2 = "UPDATE RAPPORT_VISITE SET RAP_VUE = 1 where RAP_NUM = '"+numRapport+"' ";
-					ResultSet rs2 = st.executeQuery(req);
+				 Statement st2 =connexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,       
+							ResultSet.CONCUR_READ_ONLY);;
+				 
+				 
+				 
+							int rs2 = st.executeUpdate(req2);
 					System.out.println(rs2);
             
          } catch (SQLException e) {
@@ -431,6 +431,36 @@ public class ModeleFoody extends AbstractTableModel {
             }
  		return unRapport;  
          }
+    
+    
+    /*public void Lue(int numRapport) {
+	
+		ResultSet resultat = null;
+		Connection connexion = null;
+		PreparedStatement pst = null;
+		
+		try {
+		
+			try {
+				connexion = ConnexionBD.getConnexion();
+			} catch (ConnexionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			String sql = "Update RAPPORT_VISITE set RAP_VUE = true where RAP_NUM = ? "; 
+			pst = (PreparedStatement) connexion.prepareStatement(sql);
+			 pst.setInt(1,numRapport);
+			resultat = pst.executeQuery();
+			
+				
+		    } catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		
+		
+	}*/
 }
 
 
