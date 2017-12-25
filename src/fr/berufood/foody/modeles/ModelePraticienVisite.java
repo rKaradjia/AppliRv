@@ -6,8 +6,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 import fr.berufood.foody.entites.Praticien;
-import fr.berufood.foody.entites.Visiteur;
-import fr.berufood.foody.techniques.DateFr;
+
 
 
 

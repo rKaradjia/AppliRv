@@ -280,17 +280,26 @@ public class ModeleFoody extends AbstractTableModel {
 			
 			
 				
-			
+			System.out.println(resultat);
 			
 			
 				while(resultat.next()){//tant que il y a des rsats a afficher BOOLEAN
-		
+		/*
 					String nomPraticien = resultat.getString("PRA_NOM");
 					String prenomPraticien = resultat.getString("PRA_PRENOM");
 					
 					Date dateVisite = resultat.getDate("RAP_DATE");
 				    
-				     lesPraticiens.add(new Praticien(nomPraticien,prenomPraticien,dateVisite));
+				     lesPraticiens.add(new Praticien(nomPraticien,prenomPraticien,dateVisite));*/
+					
+					Praticien praticien = new Praticien();
+				    praticien.setNom(resultat.getString("PRA_NOM"));
+				    praticien.setPrenom(resultat.getString("PRA_PRENOM"));
+			       // visiteur.setDateEmbauche(resultat.getDateFr("VIS_DATEEMBAUCHE"));
+				    praticien.setDateVisite(resultat.getDate("RAP_DATE"));
+				    
+				    
+				     lesPraticiens.add(praticien);
 					
 					//	return visiteurs;
 					

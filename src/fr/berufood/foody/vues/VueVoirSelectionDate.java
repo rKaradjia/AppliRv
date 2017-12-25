@@ -101,9 +101,9 @@ public class VueVoirSelectionDate extends JDialog   {
 		
 		boxEtiquettes.add(new JLabel()) ;
 		boxEtiquettes.add( Box.createVerticalStrut(10) ) ;
-		boxEtiquettes.add(new JLabel("Login : ")) ;
+		boxEtiquettes.add(new JLabel("Mois : ")) ;
 		boxEtiquettes.add( Box.createVerticalStrut(10) ) ;
-		boxEtiquettes.add(new JLabel("MDP : ")) ;
+		boxEtiquettes.add(new JLabel("Annee : ")) ;
 		
 		boxSaisies.add( this.combobox) ;
 		boxSaisies.add( Box.createVerticalStrut(10) ) ;
